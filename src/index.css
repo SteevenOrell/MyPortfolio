@@ -1,0 +1,718 @@
+html,#root{
+  height: 100%; 
+}
+body {
+  
+  margin: 0; /* remove margin/ html,body  100% in order to use height 100% correctly */
+  height: 100%;
+ background-color: black;
+  /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+}
+
+h1,h2,h3,h4,h5, .NavBar, #basic-navbar-nav .mr-auto a{
+  
+  color: #ffffff;
+  font-family: 'Montserrat';
+}
+
+
+#basic-navbar-nav .mr-auto a{
+
+ font-weight: 600;
+  transition: 1s;
+}
+
+.option{
+
+background: #000000;
+
+
+}
+.option,.links{
+margin-left: 10%;
+
+}
+
+.mr-auto{
+  margin-left: 50%;  /*150 before */
+  
+}
+#basic-navbar-nav .mr-auto a:hover{
+  transform: scale(1.5);
+  background-color: rgb(59, 59, 59);
+}
+#basic-navbar-nav .mr-auto a:visited{
+
+  background-image: linear-gradient(to bottom, black,gray);
+}
+#homeLogo{
+  transition: 1s;
+  margin-left: 5%
+}
+#homeLogo:hover{transform: scale(1.5);
+
+}
+#toggle{
+
+background-color: white;
+width: auto;
+}
+p{
+
+  color: #bbbbbb;
+  font-family: 'Mulish';
+  font-size: 15px;
+}
+hr{
+  background-color:#404040;
+}
+
+#MainDiv{
+
+display: inline-block;
+}
+#divOne h1{
+
+font-weight: bold;
+font-size: 130px;
+
+
+
+}
+#divOne span{
+
+  background-color: black;
+  
+}
+ #divOne{
+  margin-top: 10%;
+   margin-left: 5%;
+  position: absolute;
+ }
+ 
+
+#imageMainMenu {
+
+  float: right; /* put div abolutely in right pos*/
+  width: 70%;
+  height: 90%;
+  
+  
+  /*
+max-width: 100%;
+    max-height: 100%;  image can fit div like this*/
+}
+
+
+
+
+#BioPhoto{
+
+  width: 35%;
+  height: 50%;
+  border-radius: 1%;
+  margin-left: 10%;
+ transition: 1s;
+  
+}
+#BioPhoto:hover{
+
+
+  transform: translate(0,10px);
+}
+
+#bioTextParagraph{
+
+box-sizing: border-box;  /* this allow you to align sections side by side*/
+width: 50%;
+float: right;
+margin-top: 10%;
+}
+
+.BioText {
+margin-top: 10%;
+margin-left: 50%; 
+  
+ 
+}
+
+#BioTextPhoto{
+width: 30%;
+height:30%;
+
+
+}
+
+
+button, #SubmitMessage{
+
+  border-radius:360px; /* make button corners rounded */
+  height: 53px;
+  width: 40%;
+  transition: 0.5s;
+}
+#SubmitMessage:hover,button:hover{
+
+color: #ffffff; 
+background-color: transparent; 
+border-radius: 0%;
+
+}
+
+#Download {
+
+  margin-top: 5%;
+margin-left: 50%;
+
+
+}
+
+#CareerGoalDiv{
+
+margin-top: 10%;
+ height: 55%;
+  width: 100%;
+  background-color: #EAE7E0; 
+  
+  
+}
+
+#CareerGoalDiv p {
+
+  width: 30%;
+  margin-left: 35%;
+  color: #000000;
+}
+#CareerGoalPhoto{
+
+  width: auto;
+  height:30%;
+  margin-left: 37%;
+  margin-top: 3%;
+}
+
+.CarouseImages{
+
+  width: 100%;
+  min-height:100%
+  
+}
+
+.CarouseImages1{
+  width: auto;
+ height:700px;
+ 
+ 
+
+}
+
+.buttonMobileApp:hover{
+
+background-color: black; 
+}
+
+.MobileApp{
+
+margin-left: 50%;
+margin-bottom: 20%;
+
+}
+
+#LastCarousel{
+
+  margin-bottom: 35%;
+  background-color: black;
+ margin-left: 20%;
+  height: 80%;
+  width: 60%;
+  border-radius: 10%;
+
+}
+#Carousel{
+
+  margin-top: 5%;
+}
+
+#Skills{
+margin-top: 5%;
+width: 100%;
+height: 64%;
+background-color: #EAE7E0;
+
+}
+
+#arrow{
+
+  
+  border-style: solid;
+  
+  width: 50px;
+  
+  
+}
+#Skills div{
+  margin-left: 50%;
+  position: absolute;
+}
+
+#SkillsPhoto{
+  width: auto;
+  height:30%;
+  margin-left: 50%;
+}
+
+#Skills p{
+color: #000000;
+  column-count: 3;
+  column-rule-style: solid;
+  width: 50%;
+  height:auto;
+  text-align: center;
+  margin-left: 27%;
+}
+
+.skillsLogo{
+
+  height: 30%;
+  width: 40%;
+  margin: 3%;
+}
+
+#DiplomaCertif {
+ width: 100%;
+ height: 100%;
+
+}
+
+#DiplomaCertif div{
+width: 50%;
+float: left;
+box-sizing: 50%;
+margin-bottom: 10%;
+}
+
+#DiplomaCertif div button{
+
+  margin-left: 25%;
+  margin-top: 40%;
+  height: 400px;
+  width: 50%;
+  border-radius: 0%;
+  background-color: #EAE7E0;
+  transition: 1s;
+}
+
+#DiplomaCertif div button img{
+
+ max-width: 100%;
+ max-height: 100%;
+}
+
+
+
+#DiplomaCertif div button:hover{
+
+border-radius: 30%;  
+width: 60%;
+
+}
+
+#modalImageDiv, #alertCustom{
+
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  
+  top: 0;
+ 
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+ 
+  
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+
+#modalImageDiv img{
+  margin-left: 24%;
+  
+  width :auto;
+height: 70%;
+display: block;
+
+}
+#Close:hover{
+background-color: transparent;
+}
+
+#torontoCity{
+ 
+ height:40%; 
+ width: 100%;
+ margin-top: 15%;
+ opacity: 0.5;
+ overflow: hidden;
+ 
+}
+
+#experience img{
+
+  
+  margin-left: 50%;
+  margin-top: 5%;
+}
+#experience p{
+
+ 
+  margin-top: 3%;
+  margin-left: 35%;
+}
+
+#ContactMeImage,#experience img{
+  width: 20%;
+
+}
+
+#ContactMeImage {
+
+  margin-left: 10%;
+}
+
+.logoFooter{
+
+  width: 3%;
+  height: 3%;
+  margin-left: 5%;
+}
+.logoFooter, form input, #copyright, #Message{
+margin-left: 5%;}
+
+.inputClass{
+
+width: 40%;
+  height: 53px;
+ color: white;
+ background-color: transparent;
+ border-style: solid white;
+}
+#SubmitMessage{
+  width: 15%; 
+ 
+}
+form input, #Message{
+    
+  margin-top: 3%;
+}
+form{
+
+  margin-bottom: 5%;
+}
+
+#Message{
+
+height: 150px;
+
+}
+
+#copyright{
+margin-top: 5%;
+
+}
+
+#logoSocialMedia{
+margin-left: 50%;
+
+}
+
+.logoCopyright1, .logoCopyright2{
+  margin-left: 5%;
+  width: 5%;
+  height: 15%;
+  border-radius: 360px;
+  transition: 1s;
+}
+
+.logoCopyright1:hover, .logoCopyright2:hover{
+
+  transform: rotate(360deg);
+}
+
+.logoCopyright2{
+  width: auto;
+  height: 35px;
+}
+
+#alertCustom{
+
+  background-color: black;
+}
+
+
+
+@media (max-width:1390px){
+
+
+  .MobileApp{
+
+    margin-left: 60%;
+    margin-bottom: 20%;
+    
+    }
+
+ 
+   
+}
+
+@media (max-width: 1290px){
+
+
+
+  .mr-auto{
+    margin-left: 37%;
+    
+  } 
+}
+
+@media (max-width: 1260px){
+
+  .CarouseImages1{
+    width: 55%;
+   height:700px;
+   
+   
+  
+  }
+
+
+}
+
+/* medium laptop*/
+@media (max-width: 1200px){
+
+
+  #CareerGoalDiv{
+
+ 
+     height: 60%;
+    
+      
+      
+    }
+
+    #torontoCity{
+ 
+      background-position: top ;
+     }
+
+}
+
+@media (max-width: 1080px){
+
+  .mr-auto{
+    margin-left: 28%;
+    
+  } 
+
+  
+}
+
+
+
+@media (max-width: 1020px){
+
+  .mr-auto{
+    margin-left: 22%;
+    
+  } 
+  #CareerGoalPhoto{
+
+    width: auto;
+    height:20%;
+    margin-left: 45%;
+    margin-top: 3%;
+  }
+  
+}
+
+@media (max-width: 992px){
+
+  #basic-navbar-nav .mr-auto a:hover{
+    transform: scale(1.2);
+    
+  }
+  .mr-auto{
+    width: 30%;
+    
+  } 
+ 
+    
+    #CareerGoalPhoto{
+
+      width: auto;
+      height:20%;
+      margin-left: 35%;
+      margin-top: 3%;
+    }
+
+    #CareerGoalDiv{
+
+ 
+      height: 70%;
+    
+     }
+  
+     #divOne h1{
+
+      
+      font-size: 100px;
+    
+      }
+     
+    
+    #imageMainMenu {
+    
+      float: right; 
+      width: 60%;
+      height: 70%;
+      
+      
+     
+    }
+
+}
+
+
+@media (max-width: 880px){
+
+  .mr-auto{
+    margin-left: 16%;
+    
+  } 
+ 
+  #SkillsPhoto{
+ 
+    margin-left: 40%;
+  }
+  
+  #DiplomaCertif {
+   
+    height: 80%;
+   
+   }
+
+  }
+
+   @media (max-width:805px) {
+     
+    #CareerGoalDiv p {
+
+      width: 50%;
+     
+    }
+
+    #divOne h1{
+
+      
+      font-size: 70px;
+    
+      }
+    
+    #DiplomaCertif div button{
+    
+     
+      height: 300px;
+      width: 60%;
+     
+     
+    }
+
+
+    #imageMainMenu {
+
+      float: right; 
+      width: 70%;
+      height: 90%;
+      
+      
+    
+    }
+
+     /* Skills Problem*/
+}
+
+/* tablets and phone*/
+@media (max-width: 768px){
+
+
+.container{
+height: 50%;
+width: 100%;
+
+
+}
+
+#bioTextParagraph{
+
+  
+  width: 50%;
+  float: right;
+  }
+
+  #BioPhoto{
+
+    width: 45%;
+    height: auto;
+    
+    margin-left: 0%;
+  
+    
+  }
+
+
+  #SkillsPhoto{
+ 
+    margin-left: 0%;
+    width: 50%;
+  }
+
+  #CareerGoalPhoto{
+
+width: 70%;    
+    margin-left: 0%;
+    margin-top: 3%;
+  }
+
+  .logoCopyright1{
+    
+    width: 10%;
+   
+  }
+
+  button{
+
+    width: 60%;
+  }
+  #SubmitMessage{
+
+    width: 20%;
+  }
+  form{
+
+    width: 120%;
+  }
+
+  #torontoCity{
+ 
+    background-position:  top ;
+   }
+
+   #BioTextPhoto{
+
+    width: 50%;
+   }
+
+   /* Skills Problem*/
+}
