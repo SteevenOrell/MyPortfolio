@@ -25,7 +25,7 @@ sendEmail(e){
     var email = document.getElementById("Email").value
     var message = document.getElementById("Message").value
 
-Axios.post('http://localhost:7000/sendMessage',{"Name" : name, "Email" : email, "Message" : message}).then((res)=>{
+Axios.post('https://portfolio-backend-sw.herokuapp.com/sendMessage',{"Name" : name, "Email" : email, "Message" : message}).then((res)=>{
 
     console.log(res.data)
 })
@@ -52,9 +52,9 @@ onPreview(){
   
     
     
-    alertCustom.style.width= "50%" ;
+    alertCustom.style.width= "100%" ;
     alertCustom.style.height = "30%";
-    alertCustom.style.marginLeft = "25%";
+    alertCustom.style.marginLeft = "0%";
     alertCustom.style.display = "block";
     
         }
