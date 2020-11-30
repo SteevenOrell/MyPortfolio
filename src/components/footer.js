@@ -25,7 +25,7 @@ sendEmail(e){
     var email = document.getElementById("Email").value
     var message = document.getElementById("Message").value
 
-Axios.post('https://cors-anywhere.herokuapp.com/https://portfolio-backend-sw.herokuapp.com/sendMessage',{"Name" : name, "Email" : email, "Message" : message}).then((res)=>{
+Axios.post('/sendMessage',{"Name" : name, "Email" : email, "Message" : message}).then((res)=>{
 
     console.log(res.data)
 })
