@@ -1,4 +1,4 @@
-My portfolio app using react.js, node.js, express, axios
+My portfolio app using react.js, node.js, express, axios, sendgrid, primereact,reactreveal
 
 Author: Steeven Orell WEMIN
 
