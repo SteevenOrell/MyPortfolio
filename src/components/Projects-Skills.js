@@ -1,10 +1,10 @@
 import React from 'react';
 import {Carousel} from 'react-bootstrap'
-import {Link, BrowserRouter, Switch, Router} from 'react-router-dom';
+
 import chatAppImage from './assets-copy/Capture-ChatApp.JPG'
 import CapstoneImage from './assets-copy/CapstoneImages.jpg' 
 import RunningAppImage from './assets-copy/RunningTrackAppImages.jpg';
-import ProjectsWithoutImages from './assets-copy/PhotoMainSection6.jpg';
+import ProjectsWithoutImages from './assets-copy/giphy.gif';
 import upArrow from './assets-copy/arrowUp.png';
 import downArrow from './assets-copy/downArrow.png';
 import skillsPhoto from './assets-copy/SkillsPhoto.JPG';
@@ -26,6 +26,7 @@ import phpLogo from "./assets-copy/skillslogo/php.png";
 import pythonLogo from "./assets-copy/skillslogo/python.png";
 import reactjsLogo from "./assets-copy/skillslogo/reactjs.png";
 import swiftLogo from "./assets-copy/skillslogo/swift.png";
+import Roll from 'react-reveal/Roll';
 
 
 
@@ -122,7 +123,7 @@ setTimeout(this.AddImages(7),4000);
     />
     <Carousel.Caption>
       <h3>Chat Application</h3>
-      <p>A realtime chat application allowing persons to chat. </p><p>Technologies used : Socket.io, Express, Node.js, MongoDB, Html5, Jquery</p>
+      <p>A realtime chat application allowing persons to chat. Not designed for mobile. </p><p>Technologies used : Socket.io, Express, Node.js, MongoDB, Html5, Jquery</p>
       <a href='https://chat-app-assignment1-101091788.herokuapp.com/'><button>View more</button></a>
     </Carousel.Caption>
   </Carousel.Item>
@@ -180,7 +181,7 @@ setTimeout(this.AddImages(7),4000);
   </Carousel.Item>
 </Carousel>
 
-
+<Roll left>
 <div id="Skills">
 <img src={skillsPhoto} id="SkillsPhoto"/>  <br/>
 
@@ -200,7 +201,7 @@ setTimeout(this.AddImages(7),4000);
 
    </div>
 
-        
+   </Roll>
         </> );
     }
 }

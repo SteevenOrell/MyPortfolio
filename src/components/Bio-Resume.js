@@ -3,8 +3,10 @@ import {Button} from 'react-bootstrap';
 import BioPhoto from './assets-copy/BioPhoto.jpg';
 import AboutMe from './assets-copy/Aboutme.JPG';
 import { BrowserRouter, Router, Link, Switch} from 'react-router-dom';
-import Resume from './assets-copy/SteevenOrell_WEMIN_Resume.DOCX';
+import Resume from './assets-copy/SteevenOrell_WEMIN_Resume.pdf';
 import CareerGoal from './assets-copy/CareerGoals.JPG'
+import Roll from 'react-reveal/Roll';
+
 class BioResume extends React.Component {
     constructor(props) {
         super(props);
@@ -12,25 +14,29 @@ class BioResume extends React.Component {
     }
     render() { 
         return (<BrowserRouter>
+
+
             <div className="BioText">
             
             <img src={AboutMe} alt="AboutMePhoto" id="BioTextPhoto"/>
            
             </div>
+            
         <div className="container" >
 
         <img src={BioPhoto} alt="BioPhoto" id="BioPhoto"/> 
+        <Roll left>
          <p id="bioTextParagraph"> 
         I am Sofware Developer graduated from George Brown College, and I am very passionated and dedicated to computer science. 
         Self motivated, team builder, friendly who is not scared to speak in public.
         I take a lot of time as I can to listen to other opinions and constructive feedback to improve myself if needed.
         I am passionated about sports specially soccer or football, also about music, entrepreneurship.  
             <br></br>
- <a href={Resume} style={{ textDecoration: "none"}}  download="ResumeOfSteevenOrell.docx"><button id="Download">Download Resume</button></a>
+ <a href={Resume} style={{ textDecoration: "none"}}  download="ResumeOfSteevenOrell.pdf"><button id="Download">Download Resume</button></a>
  </p>
- 
+ </Roll>
  </div>    
-
+ 
 <div id="CareerGoalDiv"> 
 <img src={CareerGoal} alt="CareerGoal" id="CareerGoalPhoto"/>
 <p>

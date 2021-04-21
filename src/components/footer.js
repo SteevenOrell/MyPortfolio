@@ -11,7 +11,8 @@ import Freelancer from './assets-copy/FreelancerLogo.png';
 import SWLogo from './assets-copy/SteevenWeminLogo.jpg'
 import Axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
-
+import { Toast } from 'primereact/toast';
+import Roll from 'react-reveal/Roll';
 
 class footer extends React.Component {
     constructor(props) {
@@ -35,36 +36,14 @@ document.getElementById("Name").value =
  document.getElementById("Email").value=  
  document.getElementById("Message").value = "";
 
- this.onPreview()
+ this.showSuccess()
    
 }
 
-onPreview(){
-    var alertCustom = document.getElementById("alertCustom");
-    var Close = document.getElementById("CloseAlert");
-    Close.style.position = "absolute";
-    Close.style.top=0 ;
-    Close.style.right= 0;
-    Close.style.margin = 0;
-    
-    Close.style.height= "20%";
-    Close.style.width= "15%";
+showSuccess() {
+    this.toast.show({severity:'success', summary: 'Successfully Sent', detail:'Your message has been sent', life: 3000});
   
-    
-    
-    alertCustom.style.width= "100%" ;
-    alertCustom.style.height = "30%";
-    alertCustom.style.marginLeft = "0%";
-    alertCustom.style.display = "block";
-    
-        }
-    
-        onClose(){
-            var alertCustom = document.getElementById("alertCustom");
-            alertCustom.style.display="none";
-            
-    
-        }
+}
 
     render() { 
 
@@ -74,7 +53,7 @@ onPreview(){
         <div id="torontoCity" style={{ backgroundImage: `url(${TorontoCity})`, backgroundAttachment: "fixed"}}></div>
         <div id="experience">
       <img src={ExperienceImage} alt="Experience"/>
-<p>  	<b>May 2020 - Current	Junior Software Developer </b><br></br>
+<p>  	<b>May 2020 - Current  Software Developer </b><br></br>
 Freelancer, Toronto, ON<br></br>
 Providing online services for clients willing to build:<br></br>
 •	Web applications<br></br>
@@ -82,7 +61,7 @@ Providing online services for clients willing to build:<br></br>
 •	Desktop applications<br></br>
 
 <br></br>
- 	<b>Oct 2019 - Oct 2019	Fundraising Representative </b><br></br>
+ 	<b>Oct 2018 - Oct 2019	Fundraising Representative </b><br></br>
 Envision fundraising, Toronto, ON<br></br>
 •	Register people willing to give money to children with disabilities<br></br>
 •	Focused on other volunteer positions for Food distribution to homeless persons<br></br>
@@ -113,14 +92,8 @@ Envision fundraising, Toronto, ON<br></br>
 
         </form>
 
-<div id="alertCustom">
-<hr></hr>
-<p>Your message has been sent successfully </p>
 
-<button id="CloseAlert" onClick={()=>{this.onClose()}}>CLOSE</button>
-
-</div>
-
+        <Toast ref={(el) => this.toast = el} />
 
         <hr></hr>
 
