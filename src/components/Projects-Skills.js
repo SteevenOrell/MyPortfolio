@@ -27,93 +27,62 @@ import pythonLogo from "./assets-copy/skillslogo/python.png";
 import reactjsLogo from "./assets-copy/skillslogo/reactjs.png";
 import swiftLogo from "./assets-copy/skillslogo/swift.png";
 import Roll from 'react-reveal/Roll';
-
-
+import Flash from 'react-reveal/Flash';
+import  CarouselPrimeReact  from 'primereact/carousel';
+import  ButtonPrimeReact  from 'primereact/button';
+import mainIm2 from './assets-copy/mainIm2.gif';
 
 class ProjectsSkills extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { listSrcPhoto: [nodejsLogo,expressLogo,mongodbLogo,reactjsLogo,
-            csharpLogo,javaLogo,dotnetLogo,javascriptLogo,oracleLogo,mysqlLogo,pythonLogo,
-            swiftLogo,phpLogo,firebaseLogo,mobileAndroidLogo,html5Logo,cssLogo,AiLogo]
+        this.state = { listSrcPhoto: [nodejsLogo,firebaseLogo,mongodbLogo,reactjsLogo,expressLogo,
+            csharpLogo,phpLogo,dotnetLogo,javascriptLogo,oracleLogo,mysqlLogo,pythonLogo,
+            swiftLogo,mobileAndroidLogo,html5Logo,cssLogo,AiLogo,javaLogo]
         
         }
+
+      
+
+
     }
 
+componentDidMount(){
+
+  if(window.innerWidth <= 640){
+    this.removeCarouselIm()
+
+  }
+  
+}
+   
+
+
+ removeCarouselIm(){
+var images = document.getElementsByClassName("carousel-item");
 
 
 
-    skillsBtnOnClick(){
+ for(var x=0;x<images.length;x++){
+
+console.log(images[x]);
+images[x].removeChild(images[x].childNodes[0])
+
+ }
+
+ }
+
  
-
-var divSkills = document.getElementById("Skills");
-var arrow = document.getElementById("arrow");
-var paragraphSkills = document.getElementById("paraSkills");
-var SkillsPhoto = document.getElementById("SkillsPhoto");
-
-if(arrow.src.includes("downArrow")){
-divSkills.style.height = "120%";  
-arrow.style.marginBottom = "10%";
-SkillsPhoto.style.height = "15%";
-arrow.src = upArrow
-divSkills.style.transition = "1s";
-arrow.style.transition= "1s";
-
-setTimeout(this.AddImages(this.state.listSrcPhoto.length,7),4000);
-
-
-
-}
-
-else{
-
-    divSkills.style.height = "62%";
-
-arrow.src = downArrow
-SkillsPhoto.style.height = "30%";
-divSkills.style.transition = "1s";
-arrow.style.transition= "1s";
-
-paragraphSkills.innerHTML=" ";
-
-setTimeout(this.AddImages(7),4000);
-
-
-}
-
-
-    }
-
- AddImages(size,start=0){
-    var listSrcPhoto = this.state.listSrcPhoto;
-    var paragraphSkills = document.getElementById("paraSkills");
-    
-    for(var x = start; x<size;x++){
-        var image = document.createElement("img");
-        var br = document.createElement("br");
-        var reactEle = <>{listSrcPhoto[x]}</>
-    image.src= reactEle.props["children"]
-    console.log(reactEle.props["children"])
-    image.className="skillsLogo";        
-        
-        paragraphSkills.appendChild(image);
-        
-        if(x != listSrcPhoto.length-1)
-        paragraphSkills.appendChild(br);
-        paragraphSkills.appendChild(br)
-        
-        }
-
- } 
-
   
     render() { 
-   
+     let listOfCard = this.state.listSrcPhoto.map(x=>{
+       return <div className="card"> <img src={x} /> </div>
+     })
+
         return ( 
         
         
         <> 
-        
+        <Flash>
         <Carousel id="Carousel">
   <Carousel.Item>
     <img
@@ -128,6 +97,7 @@ setTimeout(this.AddImages(7),4000);
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
+   
     <img
       className="CarouseImages1"
       
@@ -180,23 +150,18 @@ setTimeout(this.AddImages(7),4000);
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
-
+</Flash>
 <Roll left>
+
 <div id="Skills">
 <img src={skillsPhoto} id="SkillsPhoto"/>  <br/>
+  <div id="SkillCarousel">
 
-<p id="paraSkills"> <img src={nodejsLogo} className="skillsLogo"/> <br/> <br/> <img src={expressLogo} className="skillsLogo"/> <br/> <br/> 
-    <img src={mongodbLogo} className="skillsLogo"/> <br/> <br/> <img src={reactjsLogo} className="skillsLogo"/> <br/> <br/>
-    <img src={csharpLogo} className="skillsLogo"/> <br/> <br/> <img src={javaLogo} className="skillsLogo"/> <br/> <br/>
-    <img src={dotnetLogo} className="skillsLogo"/> <br/> <br/> 
+{listOfCard}
 
-
-
-
- </p>
+  </div>
  <div>
- <img src={downArrow} id="arrow" onClick={()=>{this.skillsBtnOnClick()}} />
-
+ 
  </div>
 
    </div>

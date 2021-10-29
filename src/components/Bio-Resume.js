@@ -6,7 +6,7 @@ import { BrowserRouter, Router, Link, Switch} from 'react-router-dom';
 import Resume from './assets-copy/SteevenOrell_WEMIN_Resume.pdf';
 import CareerGoal from './assets-copy/CareerGoals.JPG'
 import Roll from 'react-reveal/Roll';
-
+import Flash from 'react-reveal/Flash';
 class BioResume extends React.Component {
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ class BioResume extends React.Component {
         <div className="container" >
 
         <img src={BioPhoto} alt="BioPhoto" id="BioPhoto"/> 
-        <Roll left>
+        <Flash>
          <p id="bioTextParagraph"> 
         I am Sofware Developer graduated from George Brown College, and I am very passionated and dedicated to computer science. 
         Self motivated, team builder, friendly who is not scared to speak in public.
@@ -34,9 +34,9 @@ class BioResume extends React.Component {
             <br></br>
  <a href={Resume} style={{ textDecoration: "none"}}  download="ResumeOfSteevenOrell.pdf"><button id="Download">Download Resume</button></a>
  </p>
- </Roll>
+ </Flash>
  </div>    
- 
+ <Roll right>
 <div id="CareerGoalDiv"> 
 <img src={CareerGoal} alt="CareerGoal" id="CareerGoalPhoto"/>
 <p>
@@ -49,7 +49,9 @@ Continuous learning is the key to continuous evolution.
 I want to be an expert programmer at the end and get enough skills as I can.
 
 </p>
+
 </div>
+</Roll>
  </BrowserRouter>
         );
     }

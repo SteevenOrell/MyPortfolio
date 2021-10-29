@@ -13,7 +13,7 @@ import Axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
 import { Toast } from 'primereact/toast';
 import Roll from 'react-reveal/Roll';
-
+import mainIm2 from './assets-copy/mainIm2.gif'
 class footer extends React.Component {
     constructor(props) {
         super(props);
@@ -53,7 +53,19 @@ showSuccess() {
         <div id="torontoCity" style={{ backgroundImage: `url(${TorontoCity})`, backgroundAttachment: "fixed"}}></div>
         <div id="experience">
       <img src={ExperienceImage} alt="Experience"/>
-<p>  	<b>May 2020 - Current  Software Developer </b><br></br>
+      <p> 
+       <b>July 2021 - October 2021  Software Developer </b><br></br>
+       Software Developer Intern, Toronto, ON<br></br>
+Create applications for employees and customers<br></br>
+• Design’s solutions, writes code, performs unit testing, develops appropriate artefacts /
+documentation, and facilitates final delivery.<br></br>
+• Assist with creating documentation for applications and systems<br></br>
+• Build reports by leveraging data within systems <br></br>
+• Supports production issues, includes independently completing root-cause analysis and
+diagnosis. <br></br>
+• Works independently on a range of complex tasks, which may include unique situations. <br></br>
+<br></br>
+     	<b>May 2020 - October 2021  Software Developer </b><br></br>
 Freelancer, Toronto, ON<br></br>
 Providing online services for clients willing to build:<br></br>
 •	Web applications<br></br>
@@ -68,7 +80,7 @@ Envision fundraising, Toronto, ON<br></br>
 •	Teaching French to student<br></br>
 •	Teaching mathematics to student, helping orphaned children
  </p>
-
+ <img src={mainIm2} id="mainImage2"/>
         </div>
 
         <div className="Footer">

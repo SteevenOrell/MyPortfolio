@@ -240,40 +240,144 @@ background-color: black;
 #Skills{
 margin-top: 5%;
 width: 100%;
-height: 64%;
-background-color: #EAE7E0;
+height: 70%;
+background-color: #000000;
+overflow-y:scroll;
 
 }
 
-#arrow{
+#Skills:hover::-webkit-scrollbar{
+  display: block;
+}
+
+#Skills::-webkit-scrollbar {
+  
+  height: 10px;
+ 
+}
+
+#Skills::-webkit-scrollbar-track {
+  
+  border-radius: 10px;
+ 
+  background-color: darkgrey;
+  
+}
+
+#Skills::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color:gray
+  
+}
+
+
+#SkillCarousel{
+  
+  margin-top: 5%;
+    width: 75%;
+    height: 100%;
+    background-color: #EAE7E0;
+    box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.35);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* carousel item */
+ .card:first-child{
+ margin-left: -5% ;
+}
+.card{
+    
+    margin-top: 3%;
+   background-color:transparent;
+   border-style:none;
+    height: 25%;
+    width: 11%;
+    float: left;
+    /*   margin-left: -50px; */
+      transition: 0.4s ease-out;
+      position: relative;
+      left: 50px;
+
+}
+.card:not(:first-child) {
+    margin-left: -15px;
+}
+
+.card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+
+  .card img{
+
+    width: auto;
+    height: auto; 
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 20px;
+    
+    box-shadow: -1rem 0 3rem #000;
+  }
+
+ 
+  @media(max-width:1100px){
+
+    #Skills{
+      width:85%}
+    
+    .card{
+     
+     
+      width: 25%;
+    
+      margin-left: -2px;
+  
+  }
+
+
+  }
+
+  @media(max-width:500px)and (min-height:500px ){
+
+#Skills{width:100%;
+       }
+       #Skills::-webkit-scrollbar {
+        display: none;   
+      }
+  #SkillCarousel{
+    width: 100%;
+    height: 160%;
+    
+   
+  }
+    .card{
+     
+      height: 12%;
+      width: 30%;
+    
+        
+  
+  }
 
   
-  border-style: solid;
-  
-  width: 50px;
-  
-  
-}
-#Skills div{
-  margin-left: 50%;
-  position: absolute;
-}
+  }
 
-#SkillsPhoto{
-  width: auto;
-  height:30%;
-  margin-left: 50%;
-}
 
-#Skills p{
-color: #000000;
-  column-count: 3;
-  column-rule-style: solid;
-  width: 50%;
-  height:auto;
-  text-align: center;
-  margin-left: 27%;
-}
+
+
+
+  #SkillsPhoto{
+    width: auto;
+    height:30%;
+    margin-left: 50%;
+  }
 
 .skillsLogo{
 
@@ -343,6 +447,8 @@ width: 60%;
   margin-left: 50%;
   margin-top: 5%;
 }
+
+
 #experience p{
 
  
@@ -397,7 +503,7 @@ height: 150px;
 }
 
 #copyright{
-margin-top: 5%;
+margin-top: 3%;
 
 }
 
@@ -423,6 +529,11 @@ margin-left: 50%;
   width: auto;
   height: 35px;
 }
+
+
+
+
+
 
 
 /* medium laptop*/
@@ -460,14 +571,6 @@ margin-left: 50%;
       margin-left: 50%;
       margin-top: 3%;
     }
-
-    #ContactMeImage{
-
-      
-      margin-left: 4%;
-      
-    }
-
     #SkillsPhoto{
 
       width: 40%;
@@ -475,6 +578,14 @@ margin-left: 50%;
       margin-left: 30%;
       
     }
+    #ContactMeImage{
+
+      
+      margin-left: 4%;
+      
+    }
+
+  
     .MobileApp{
 
    margin-right: 0%;
@@ -522,7 +633,13 @@ margin-left: 50%;
   } 
  
     
-   
+  #SkillsPhoto{
+
+    width: 77%;
+    height:auto;
+    margin-left: 0%;
+    
+  }
   
      #divOne h1{
 
@@ -543,13 +660,7 @@ margin-left: 50%;
     }
 
     
-  #SkillsPhoto{
 
-    width: 77%;
-    height:auto;
-    margin-left: 0%;
-    
-  }
 
 
 #Skills p{
@@ -720,7 +831,15 @@ width: 100%;
     }
   
     
-   
+    #torontoCity::before{
+      position:fixed;
+      height:40%; 
+      width: 100%;
+      margin-top: 15%;
+      opacity: 0.5;
+      overflow: hidden;
+      
+     }
   
   }
 
@@ -728,14 +847,20 @@ width: 100%;
   /* Mobile Phone  ************************************************************************************************************************/
 @media (max-width:480px) {
   
+#divOne{
+margin-top:23%;
+  margin-left: 10%;
+}
 
   #imageMainMenu {
     
      
-    width: 75%;
+    width: 100%;
     height: 100%;
    
   }
+
+  
 
   #divOne h1{
 
@@ -793,7 +918,7 @@ width: 100%;
     }
 
     #Carousel{
-      height: 85%;
+      height: 70%;
 
     }
 
@@ -807,13 +932,15 @@ width: 100%;
     }
    .carousel-item{
    
-    margin-top: 100%;
+    margin-top: 120%;
     
     height: 100%;
    }
+
+   
    .carousel-caption{
 
-    margin-bottom: 45%;
+    margin-top:35%;
     width: 75%;
    }
 
@@ -845,7 +972,7 @@ margin-left: 43%;
 
 #Skills{
   
-  height: 50%;
+  height: 100%;
   
   
   }
@@ -856,13 +983,16 @@ margin-left: 43%;
     
   }
 
-  
+  #DiplomaCertif div{
+    width: 100%;
+
+  }
 
 
    #DiplomaCertif div button{
   
    
-    height: 200px;
+    height:   200px;
     width: 70%;
    margin-left : 16%;
    border-radius: 5%;
