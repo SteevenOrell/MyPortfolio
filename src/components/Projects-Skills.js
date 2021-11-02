@@ -57,7 +57,7 @@ componentDidMount(){
     skillsCarousel.remove();
     var imgSkills = document.createElement('img');
     imgSkills.src = allcompetes;
-    imgSkills.style.width = "127%";
+    imgSkills.style.width = "110%";
     imgSkills.style.height = "95%"; 
     skillsDiv.appendChild(imgSkills)
   }
