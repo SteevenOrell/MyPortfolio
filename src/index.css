@@ -834,7 +834,7 @@ width: 100%;
   
     
     #torontoCity{
-     background-attachment: scroll;
+     background-attachment: scroll !important;
       
      }
   
