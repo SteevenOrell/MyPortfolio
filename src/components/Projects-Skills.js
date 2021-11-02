@@ -31,14 +31,15 @@ import Flash from 'react-reveal/Flash';
 import  CarouselPrimeReact  from 'primereact/carousel';
 import  ButtonPrimeReact  from 'primereact/button';
 import mainIm2 from './assets-copy/mainIm2.gif';
+import allcompetes from './assets-copy/skillslogo/Allcompetences.jpeg';
 
 class ProjectsSkills extends React.Component {
     constructor(props) {
         super(props);
         this.state = { listSrcPhoto: [nodejsLogo,firebaseLogo,mongodbLogo,reactjsLogo,expressLogo,
             csharpLogo,phpLogo,dotnetLogo,javascriptLogo,oracleLogo,mysqlLogo,pythonLogo,
-            swiftLogo,mobileAndroidLogo,html5Logo,cssLogo,AiLogo,javaLogo]
-        
+            swiftLogo,mobileAndroidLogo,html5Logo,cssLogo,AiLogo,javaLogo],
+            
         }
 
       
@@ -50,7 +51,15 @@ componentDidMount(){
 
   if(window.innerWidth <= 640){
     this.removeCarouselIm()
-
+    
+    var skillsDiv = document.getElementById("Skills");
+    var skillsCarousel = document.getElementById("SkillCarousel");
+    skillsCarousel.remove();
+    var imgSkills = document.createElement('img');
+    imgSkills.src = allcompetes;
+    imgSkills.style.width = "127%";
+    imgSkills.style.height = "95%"; 
+    skillsDiv.appendChild(imgSkills)
   }
   
 }
@@ -82,7 +91,7 @@ images[x].removeChild(images[x].childNodes[0])
         
         
         <> 
-        <Flash>
+       
         <Carousel id="Carousel">
   <Carousel.Item>
     <img
@@ -150,7 +159,6 @@ images[x].removeChild(images[x].childNodes[0])
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
-</Flash>
 <Roll left>
 
 <div id="Skills">
@@ -160,9 +168,7 @@ images[x].removeChild(images[x].childNodes[0])
 {listOfCard}
 
   </div>
- <div>
- 
- </div>
+
 
    </div>
 
