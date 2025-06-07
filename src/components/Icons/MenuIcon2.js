@@ -1,0 +1,4 @@
+import React from "react";
+import { useState } from "react";
+
+export const MenuIcon2 = (props)=><svg width="20" height="20" viewBox="0 0 18 18" fill="#ffffff"><polyline id="globalnav-menutrigger-bread-bottom" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" points="2 12, 16 12" class={`apple-menu-line1 ${props.isOpen}`}></polyline><polyline id="globalnav-menutrigger-bread-top" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" points="2 5, 16 5" class={`apple-menu-line2 ${props.isOpen}`}></polyline></svg>

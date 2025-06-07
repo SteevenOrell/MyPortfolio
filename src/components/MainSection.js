@@ -1,91 +1,40 @@
-import React from 'react';
-import './main.css';
-import imageMainMenu from './assets-copy/giphy2.gif';
-import imMain from './assets-copy/mainIm.gif'
+import {React} from "react";
+import Spline from '@splinetool/react-spline';
+import { motion, AnimatePresence } from "motion/react"
+import { FadeInAnimation } from "./FadeInAnimation";
 
-class MainSection extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { dynamicIm: imageMainMenu  }
-    }
-
-handleImChange(){
-if(window.innerWidth <= 640){
-
-    this.setState({dynamicIm: imMain})
-}
-
-var elem = document.getElementById("divOne");
-
-var node = document.createElement("H1");                 
-var textnode = document.createTextNode("\"Welcome to my portfolio\"");         
-node.appendChild(textnode); 
-
-var node2 = document.createElement("H1");                 
-var textnode2 = document.createTextNode("Steeven Orell");         
-var nodeBr = document.createElement("BR"); 
-var nodeSpan = document.createElement("span")
-var textnode3 = document.createTextNode("WEMIN")
-nodeSpan.appendChild(textnode3)
-
-var nodeP = document.createElement("p")
-var textnode4 = document.createTextNode("Software Developer")
-nodeP.appendChild(textnode4)
-
-node2.appendChild(textnode2); 
-node2.appendChild(nodeBr)
-node2.appendChild(nodeSpan)
-node2.appendChild(nodeP)
+function MainSection(){
 
 
+    return (
+    <div id="HeroDiv1">
 
+        <div id="Carousel-1" className="CarouselHeroSection1">
+            
+            <div className= "Carousel1-content" >
 
-
-setInterval(()=>{ 
-
-    
-    if(!(elem.innerHTML).includes("Welcome") ){
-
-        elem.innerHTML=""
-        elem.className="tracking-in-expand-fwd-bottom"
-        elem.appendChild(node)
-    
-    }
-    else{
-
-        elem.innerHTML=""
-        elem.className = "tracking-in-contract"
-        elem.appendChild(node2)
-    }
-       
-    
-  
-}, 4000);
-}
-
-componentDidMount(){
-this.handleImChange()
-
-}
-
-    
-    render() { 
-        
-        return ( <>
-        <div id="MainDiv" >
-            <div id="divOne" className = "tracking-in-contract"> <h1>Steeven Orell <br/> <span >  WEMIN</span></h1> 
-            <p> Software Developer</p>
+                    
+                    <h3>
+                     <FadeInAnimation > {"HELLO WORLD"}</FadeInAnimation>
+                    </h3>
+                    <p><h5> <FadeInAnimation > {"WELCOME TO MY PORTFOLIO"} </FadeInAnimation></h5></p>
+                    
+                    
             </div>
-        <div >
-           
+            
+            <div className="Hero1Animation3D">
+                <Spline scene="https://prod.spline.design/EDAfnUxTAH9Rinj1/scene.splinecode" />
 
-<img id="imageMainMenu"  src = {this.state.dynamicIm} alt="main menu picture"/>  
-</div>
-</div>
-</>
+
+            </div>
+            
+        </div>
+       
+
         
-       );
-    }
+    </div>
+    )
+
 }
- 
+
 export default MainSection;

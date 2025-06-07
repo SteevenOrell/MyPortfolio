@@ -1,25 +1,42 @@
 import React from 'react';
 import NavB from "./components/NavB";
-import Footer from "./components/footer";
+
 import './App.css'
 import MainSection from './components/MainSection';
-import BioResume from './components/Bio-Resume';
-import ProjectsSkills from './components/Projects-Skills';
-import DiplomeCertif from './components/Diploma-Certificate';
-import 'primeicons/primeicons.css';
-import 'primereact/resources/primereact.css';
-import 'primereact/resources/themes/saga-blue/theme.css';
+
+
+import {Link, BrowserRouter, Switch, Router} from 'react-router-dom';
+import logoSW from './components/assets-copy/SteevenWeminLogo.jpg';
+import Experiences from './components/Experiences';
+import Skills from './components/Skills';
+import BioCareerGoals from './components/BioCareerGoals';
+import Project from './components/Projects';
+import Footer from './components/footer';
+
+
 
 class App extends React.Component {
  state = {  }
+
+
+
+ 
   render() { 
+
     return ( <>
+    
+    
+    
     <NavB/>
     <MainSection/>
-    <BioResume/>
-    <ProjectsSkills/>
-    <DiplomeCertif/>
+    <BioCareerGoals/>
+    
+    <Skills/>
+    <Experiences/>
+    <Project/>
     <Footer/>
+    
+   
     </> );
   }
 }

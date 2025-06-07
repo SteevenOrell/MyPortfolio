@@ -1,126 +1,118 @@
-import React from 'react';
-import  './main.css';
-import TorontoCity from './assets-copy/buildings-near-body-of-water-at-night-1519088.jpg'
-import ContactMeIm from './assets-copy/ContactMeImage.jpg';
-import ExperienceImage from './assets-copy/ExperienceImage.jpg';
-import LocationIm from './assets-copy/LocationPhoto.jpg';
-import EmailPhoto from './assets-copy/Emailphoto.jpg';
-import GitHubIm from './assets-copy/GitHubLogo.png';
-import LinkedIn from './assets-copy/Linkedin-icon.png';
-import Freelancer from './assets-copy/FreelancerLogo.png';
-import SWLogo from './assets-copy/SteevenWeminLogo.jpg'
-import Axios from 'axios';
-import Alert from 'react-bootstrap/Alert';
+import React, { useRef, useState } from 'react';
+
+import Spline from '@splinetool/react-spline';
+
+import LogoImg from './assets-copy/SteevenWeminLogo.jpg';
+import emailjs from '@emailjs/browser';
 import { Toast } from 'primereact/toast';
-import Roll from 'react-reveal/Roll';
-import mainIm2 from './assets-copy/mainIm2.gif'
-class footer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-        
-    }
-sendEmail(e){
+
+function Footer()  {
+    const form = useRef();
+    const toast = useRef(null);
+    const[styleCSS,setStyleCSS] = useState({})
+
+    function sendEmail(e){
     e.preventDefault();
-    var name = document.getElementById("Name").value
-    var email = document.getElementById("Email").value
-    var message = document.getElementById("Message").value
+        console.log(process.env.REACT_APP_EMAILJS_SERVICE_ID,)
+        emailjs
+        .sendForm(
+            process.env.REACT_APP_EMAILJS_SERVICE_ID,
+            process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+            form.current,
+            {
+            publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+            }
+        )
+        .then(
+            (result) => {
+            //console.log('SUCCESS!', result.text);
+            toast.current.show({severity:'success', summary: '', detail:'Your message has been sent', life: 3000});
 
-Axios.post('https://portfolio-backend-sw.herokuapp.com/sendMessage',{"Name" : name, "Email" : email, "Message" : message}).then((res)=>{
+            form.current.reset(); // Optionally reset the form
+            },
+            (error) => {
+            //console.log('FAILED...', error.text);
 
-    console.log(res.data)
-})
+            toast.current.show({severity:'error', summary: '', detail:'Failed to send message', life: 3000});
 
+            }
+        );
 
-document.getElementById("Name").value = 
- document.getElementById("Email").value=  
- document.getElementById("Message").value = "";
+    //  this.showSuccess()
+    
+    }
+    
 
- this.showSuccess()
-   
-}
-
-showSuccess() {
-    this.toast.show({severity:'success', summary: 'Successfully Sent', detail:'Your message has been sent', life: 3000});
-  
-}
-
-    render() { 
 
        
-        return ( <>
+        return (     
+        <>
+            <Toast ref={toast} id='ToastNotif' style={styleCSS}/>
+            <div id='ContactFormDiv'>
+                <div id="animationCoverContactForm"><Spline scene="https://prod.spline.design/Sm5vOdV9GRCoaAQN/scene.splinecode" /> </div>
+
+                <form id='ContactForm'ref={form} onSubmit={sendEmail} method='POST'>
+                    <h3><i>CONTACT ME</i></h3>
+                    <div>
+                        <label className='labelContactForm'> Name</label><br/>
+                        <input text='name' placeholder='Your name' name="name" required/> <br/>
+                    </div>
+                    <div>
+                        <label className='labelContactForm'> Email</label><br/>
+                        <input text='email' placeholder='Let connect via email' name='email'  required/> <br/>
+                    </div>
+                    <div>
+                        <label className='labelContactForm'> Your Message</label><br/>
+                        <textarea placeholder='Message me' rows="7" cols="100" name='message' required id='message'/> <br/>
+                    </div>
+                    <button>Submit</button>
+                </form>
+            </div>
+           
+
+
+  <footer id="Footer1" class="w-full">
+            <div className='LogoFooterDiv'>
+                <li> <a href='#'><img id='HomeLogo' src={LogoImg} alt='Home logo' width="150" height="150" /></a></li>
+                
+
+            </div>
+            <div className='OtherLinks'>
+            <div className='OtherFooterDiv'>
+                <ul>
+                    <h5> Overview</h5>
+                    <li> <a href='#BioCareer'><p>About me</p></a></li>
+                    <li> <a href='#CareerGoalDiv'><p>Career Goals</p></a></li>
+                    <li> <a href='#ContactForm'><p>Contact</p></a></li>
+                </ul>
+            </div>
+            <div className='OtherFooterDiv'>
+                <ul>
+                    <h5>  Technical Skills </h5>
+                    <li> <a href='#TitleExperience'><p>Work </p></a></li>
+                    <li> <a href='#SkillsSection1'><p>Skills</p></a></li>
+                    <li> <a href='#ProjectDiv'><p>Projects</p></a></li>
+                    
+                </ul>
+            </div>
+                <div className='OtherFooterDiv'>
+                <ul>
+                    <h5> Social network</h5>
+                    <li> <a href='https://www.linkedin.com/in/orell-wemin-8519a5179'><p>LinkedIn</p></a></li>
+                    <li> <a href='https://github.com/SteevenOrell/'><p>Github</p></a></li>
+                    <li> <a href='https://www.freelancer.com/u/JuniOrell'><p>Freelancer</p></a></li>
+                </ul>
+            </div>
+            </div>
+    </footer>
+    
+     <div id='AllRightReserved'>
+        <hr/>
+        <p>© {new Date().getFullYear()} all right reserved to Steeven Orell WEMIN</p>
+    </div>   
         
-        <div id="torontoCity" style={{ backgroundImage: `url(${TorontoCity})`, backgroundAttachment: "fixed"}}></div>
-        <div id="experience">
-      <img src={ExperienceImage} alt="Experience"/>
-      <p> 
-       <b>July 2021 - October 2021  Software Developer </b><br></br>
-       Software Developer Intern, Toronto, ON<br></br>
-Create applications for employees and customers<br></br>
-• Design’s solutions, writes code, performs unit testing, develops appropriate artefacts /
-documentation, and facilitates final delivery.<br></br>
-• Assist with creating documentation for applications and systems<br></br>
-• Build reports by leveraging data within systems <br></br>
-• Supports production issues, includes independently completing root-cause analysis and
-diagnosis. <br></br>
-• Works independently on a range of complex tasks, which may include unique situations. <br></br>
-<br></br>
-     	<b>May 2020 - October 2021  Software Developer </b><br></br>
-Freelancer, Toronto, ON<br></br>
-Providing online services for clients willing to build:<br></br>
-•	Web applications<br></br>
-•	Mobile applications<br></br>
-•	Desktop applications<br></br>
-
-<br></br>
- 	<b>Oct 2018 - Oct 2019	Fundraising Representative </b><br></br>
-Envision fundraising, Toronto, ON<br></br>
-•	Register people willing to give money to children with disabilities<br></br>
-•	Focused on other volunteer positions for Food distribution to homeless persons<br></br>
-•	Teaching French to student<br></br>
-•	Teaching mathematics to student, helping orphaned children
- </p>
- <img src={mainIm2} id="mainImage2"/>
-        </div>
-
-        <div className="Footer">
-        <img src={ContactMeIm} alt="Contact" id="ContactMeImage"/><br></br><br></br>
-        
-        <a href="mailto:steevyorelljunior@gmail.com"><p><img src={EmailPhoto} alt="Email" id="EmailPhoto" className="logoFooter"/>  steevyorelljunior@gmail.com</p> </a> 
-         
-        <p> <img src={LocationIm} alt="Location" id="LocationPhoto" className="logoFooter"/> Mutual Street, ON, Toronto. </p>
-        <br></br>
-        
-        <form onSubmit={ (e)=>{this.sendEmail(e)}} method="POST" id="form">
-
-<input type="text"  placeholder="Name" id="Name" className="inputClass" required/><br></br>
-
-
-<input type="email"  placeholder="Email" id="Email" required className="inputClass"/><br></br>
-
-<textarea  placeholder="Message" id="Message" className="inputClass" required> </textarea><br></br>
-
-<input type='submit' id="SubmitMessage" value="Send Message"/>
-
-        </form>
-
-
-        <Toast ref={(el) => this.toast = el} />
-
-        <hr></hr>
-
-<div id="copyright"><p> Copyright all right reserved to Steeven Orell WEMIN    
-
-<div id="logoSocialMedia"> 
-<a href="https://www.linkedin.com/in/steeven-wemin-8519a5179/"><img src={LinkedIn} className="logoCopyright1" /></a>
-<a href="https://github.com/SteevenOrell?tab=repositories"><img src={GitHubIm}  className="logoCopyright2"/></a>
-<a href="https://www.freelancer.com/u/JuniOrell"><img src={Freelancer} className="logoCopyright2"/></a>
-</div>
-</p> 
-   </div>
-        </div>
-        </> );
-    }
+        </>);
+    
 }
  
-export default footer;
+export default Footer;

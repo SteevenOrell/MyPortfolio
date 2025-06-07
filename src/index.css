@@ -1,3 +1,7 @@
+@import "tailwindcss";
+
+
+
 html,#root{
   height: 100%; 
   scroll-behavior: smooth;
@@ -10,42 +14,689 @@ body {
   
 }
 
-h1,h2,h3,h4,h5, .NavBar, #basic-navbar-nav .mr-auto a{
+@font-face {
+  font-family: HelveticaBold;
+  src: url(./Fonts/Helvetica\ Neue\ Bold/HelveticaNeueMedium.otf);
+}
+@font-face {
+  font-family: HelveticaRegular;
+  src: url(./Fonts/Helvetica\ Neue\ Bold/HelveticaNeueRoman.otf);
+}
+
+
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: none;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  tab-size: 4;
+  /* 3 */
+  font-family: HelveticaBold; /*ui-sans-serif, system-ui, sans-serif, "Oswald","Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+ h1,h2,h3,h4,h5,h6{
   
   color: #ffffff;
-  font-family: 'Montserrat';
+  font-family: HelveticaBold;
+  letter-spacing: -0.5px;
+}
+p{
+
+  color: #bbbbbb;
+  font-family:"DM Sans", sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 16px;
 }
 
-
-#basic-navbar-nav .mr-auto a{
-
-  font-weight: 600;
-  transition: 1s;
-}
-
-.option{
-
-background: #000000;
-
-
-}
-.option,.links{
-margin-left: 10%;
-
-}
-
-.mr-auto{
-  margin-left: 50%;  /*150 before */
+h1
+ {
+  font-size: 17vh;
+  font-weight: 900;
   
 }
-#basic-navbar-nav .mr-auto a:hover{
-  transform: scale(1.5);
-  background-color: rgb(59, 59, 59);
+h2{
+  font-size: 10vh;
+  font-weight: 700;
 }
-#basic-navbar-nav .mr-auto a:visited{
+h3{
+  font-size: 8vh;
+  font-weight: 600;
+}
+h4{
+  font-size: 5vh;
+  font-weight: 500;
+}
 
-  background-image: linear-gradient(to bottom, black,gray);
+h5{
+  font-size: 3vh;
+  font-weight: 500;
 }
+
+h6{
+  font-weight: 600;
+}
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: #fff;
+  text-decoration: inherit;
+  font-family:HelveticaBold;
+  letter-spacing: -0.5px;
+  font-size: 18px;
+
+}
+
+a:hover{
+  color: #fff;
+  text-shadow: 0 0 4px rgb(255, 255, 255);
+  text-decoration: inherit;
+}
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: "DM Sans", sans-serif;/*ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Oswald","Liberation Mono", "Courier New", monospace;*/
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/*ul*/
+ol,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul { /*When installing Next ui margin 0 and padding o is maintain */
+  padding:0%;
+}
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::-ms-input-placeholder, textarea::-ms-input-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img, /*svg*/
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+svg{ /*When installing Next ui display becomes block */
+  display: inline;
+  
+}
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 50%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.filter {
+  -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+
+
+
 #homeLogo{
   transition: 1s;
   margin-left: 5%
@@ -53,997 +704,1390 @@ margin-left: 10%;
 #homeLogo:hover{transform: scale(1.5);
 
 }
-#toggle{
 
-background-color: white;
-width: auto;
-}
-p{
+/*****************************************************************NavBar2***********************************************************/
 
-  color: #bbbbbb;
-  font-family: 'Mulish';
-  font-size: 15px;
-}
-hr{
-  background-color:#404040;
+#nav-bar2-div{
+  position: relative;
 }
 
-#MainDiv{
-
-display: inline-block;
-}
-#divOne h1{
-
-font-weight: bold;
-font-size: 100px;
-
-
-
-}
-
-
-#divOne span{
-
-  background-color: black;
+#nav-bar2{
+  top: 0;
+  padding: 13.5px 100px 2px 100px;
+  display:flex;
+  position: fixed;
+  position: -webkit-fixed;
+  z-index: 16;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  height: 50px;
+  /* border-bottom: 1px solid black; */
+  mix-blend-mode: difference;
   
 }
- #divOne{
-  margin-top: 10%;
-   margin-left: 35%;
+
+#nav-bar2 ul li{
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  
+  
+}
+#nav-bar2 ul li:hover, #Logo2 li:hover, .dropdown-content ul li:hover{
+  /* color: black; */
+}
+.dropdown-content ul li{
+  /* color: #0000; */
+}
+#Logo2 li{
+  /* color: #ffffff; */
+  padding: 1% 0% 1% 0%;
+}
+#nav-links2{
+  justify-content: flex-end;
+  display: flex;
+  width: 450px;
+  
+}
+
+#nav-links2 li{
+
+  padding: 1% 4% 1% 4%;
+  
+}
+#nav-links2 li button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25vh;
+  
+}
+
+#nav-links2 li button p{
+  padding-left: 1vh;
+  padding-right: 3vh;
+}
+
+#HomeLogo{
+  transition: 1s;
+  
+}
+#HomeLogo:hover{transform: scale(1.5);
+
+}
+
+.divContainer{
+
+
+  background-color: transparent;
+  width: 0%;
+  position: fixed;
+  top: 50px; /* 10.5 without nextui*/
+  z-index: 16;
+  height: 0; 
+  display: flex; 
+  justify-content:space-between;
+  transition: height 0.1s ease-in-out ;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.divContainer.open{
+  
+  width:200px;
+  height: 250px;
+  background-color: #000;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  right: 330px;
+  
+  /* border-bottom: 1px solid white; */
+  box-shadow: 0 0 4px rgb(255, 255, 255);
+}
+
+
+
+.dropdown-content, .mobile-content-menu2{
+  display:none;
+  align-items: center;  
+  width: 100%;
+  justify-content:flex-start;
+  
+}
+
+.dropdown-content ul {
+  padding: 0% 3% 3% 3%;
+  
+}
+
+/* .dropdown-content ul li a{
+  transform: translateX(-50%);
+  
+} */
+.dropdown-content.open {
+   display: flex;
+   padding-left: 14%;
+   
+   
+}
+/* .dropdown-content.open ul li a{
+  transform: translateX(0%);
+  transition: transform 0.2s ease-in-out ;
+} */
+
+
+#burger-menu2{
+  display:none;
+}
+.blur-curtains2{
+  /* -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px); */
+  width: 100%;
+  height: 100vh; 
+  position: -webkit-fixed; /*Safari */
+  position: fixed;
+  top: 0;
+  z-index: 7;
+  display: none;
+}
+
+.blur-curtains2.open, .blur-curtains2.open-search-bar-with-input, .blur-curtains2.open-search-bar-only{
+  display: block;
+}
+#burger-menu2 li svg{
+  position: relative;
+  width: 20px;
+}
+.apple-menu-line1,.apple-menu-line2{
+
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+.apple-menu-line1.open{
+  /* left: 50%; */
+  transform: translateY(0%) translateX(-3%) rotate(-45deg);
+  -webkit-transform: translateY(0%) translateX(-3%) rotate(-45deg);
+  -moz-transform: translateY(0%) translateX(-3%) rotate(-45deg);
+  -o-transform: translateY(0%) translateX(-3%) rotate(-45deg);
+  
+  transform-origin: center;
   position: absolute;
- }
+  
  
 
-#imageMainMenu {
+}
+.apple-menu-line2.open{
+  /* left: 50%; */
+  transform: translateY(-5%) translateX(3%) rotate(45deg);
+  -webkit-transform: translateY(-5%) translateX(3%) rotate(45deg);
+  -moz-transform: translateY(-5%) translateX(3%) rotate(45deg);
+  -o-transform: translateY(-5%) translateX(3%) rotate(45deg);
+  transform-origin: left center;
+  position: absolute;
+  top: 15px;
+}
 
-  float: right; /* put div abolutely in right pos*/
-  width: 150%;
-  height: 150%;
+.mobile-content-menu2.open{
+  padding-top: 4%;
+  padding-left: 5%;
+  display: block;
+}
+.mobile-content-menu2.open li{
+  list-style-type: none;
+  text-decoration: none;
+  padding-top: 3%;
+  height: 6vh;
+  font-size: 3vh;
+  font-weight: 600;
   
-  
-  /*
-max-width: 100%;
-    max-height: 100%;  image can fit div like this*/
+
 }
 
 
 
+@media (min-height:750px){
+  #nav-bar2{
+    
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: #000;
+  }
+  
 
-#BioPhoto{
 
-  width: 35%;
-  height: 50%;
-  border-radius: 1%;
+#nav-links2 li button{
+
+  width: 14vh;
+  
+}
+
+  #nav-links2{
+
+    width: 60vh;
+  }
+  .divContainer{
+    top: 6%;
+  }
+
+  .divContainer.open{
+  /* width:20%; */
+  /* height: 19vh; */
+  /* right: 45%; */
+
+}
+  .dropdown-content.open {
+    
+    font-size: 2vh;
+    font-weight: 600;
+
+     
+  }
+
+   #nav-links2 li button p{
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+  }
+}
+
+@media (max-width:750px) {
+  
+  #nav-bar2 {
+    height: 7vh;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: #000;
+    padding: 13.5px 25px 2px 25px;
+  }
+  
+  #burger-menu2,#search-icon2-menu2{
+    display:flex;
+  }
+
+  #nav-links2{
+    display: none;
+  }
+  #HomeLogo{
+    width: 70px;
+  
+  }
+  .divContainer{
+    top: 7%;
+  }
+  .divContainer.open{
+    height: 100%;
+    width:100%;
+    right: 0%;
+  }
+
+
+  
+   /* .dropdown-content{
+
+   } */
+
+  .dropdown-content.open {
+    height: 6vh;
+    font-size: 3vh;
+    font-weight: 600;
+    padding-top: 4%;
+    padding-left: 5%;
+     display: block;
+     
+  }
+}
+
+/* @media (min-width:1600px){
+  .divContainer.open {
+    right: 0%;
+    left: 75% 
+  } 
+}*/
+
+
+/*********************************************HeroSection1*************************************************/
+
+#HeroDiv1,#HeroDiv2{
+  
+  width: 100%;
+  height:100vh;
+  overflow: hidden;
+  
+  position: relative;
+  
+  
+}
+.CarouselHeroSection1,.CarouselHeroSection2{
+
+  width: 100%;
+  height: 100vh;
+  
+  align-items: center;
+  justify-content: space-between;
+  
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  
+}
+
+
+.Carousel1-content,.Carousel2-content {
+
+  width: 50%;
   margin-left: 10%;
- transition: 1s;
+  position: absolute;
   
-}
-#BioPhoto:hover{
 
-
-  transform: translate(0,10px);
 }
 
-#bioTextParagraph{
-
-box-sizing: border-box;  /* this allow you to align sections side by side*/
-width: 50%;
-float: right;
-margin-top: 10%;
+ .Carousel1-content  {
+  line-height: 1px;
+  line-height: 1;
+  margin-left: 0%;
+  left:50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+ }
+.Carousel1-content h3, .Carousel1-content p,.Carousel2-content h3, .Carousel2-content p {
+  padding-bottom: 0%;
 }
 
-.BioText {
-margin-top: 10%;
-margin-left: 50%; 
+ .Carousel2-content h3, .Carousel2-content p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
+  }
+
+.Hero1Animation3D,.Hero2Animation3D{
   
+  top:40px;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+@media (min-height:750px){
+
+  #HeroDiv1,#HeroDiv2{
+  
+    
+    height:100vh;
+
+    
+    
+  }
+  .CarouselHeroSection1, .CarouselHeroSection2{
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .Carousel1-content,.Carousel2-content {
+
+    width: 80%;
+    
+    position: absolute;
+    /* left: 50%; */
+    
+    top: 58%;
+    /* text-align: center; */
+    margin-left: 0%
+  }
+  .Carousel1-content h3,.Carousel2-content h3{
+    font-size: 4vh;
+    
+  }
  
-}
-
-#BioTextPhoto{
-width: 30%;
-height:30%;
+  .Hero1Animation3D,.Hero2Animation3D{
+    top:0px;
+  }
 
 
 }
 
+@media (max-width:850px){
 
-button, #SubmitMessage,#Download{
+  #HeroDiv1,#HeroDiv2{
+  
+    
+    height:100vh;
 
-  border-radius:360px; /* make button corners rounded */
-  height: 53px;
-  width: 40%;
-  transition: 0.5s;
+    
+    
+  }
+  .CarouselHeroSection1,.CarouselHeroSection2{
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .CarouselHeroSection2{
+    height: 70%;
+  }
+  .Carousel1-content,.Carousel2-content {
+
+    width: 85%;
+    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    text-align: center;
+    margin-left: 0%
+  }
+  .Carousel1-content h3,.Carousel2-content h3{
+    font-size: 4vh;
+    
+  }
+  .Carousel1-content p h5{
+    font-size: 2vh;
+    
+  }
+  .Hero1Animation3D,.Hero2Animation3D{
+    top:0px;
+    
+  }
+
+  /* .Hero1Animation3D{
+    width: 100%;
+    height: 100%;
+    
+    top: 7%;
+    right:-6%;
+  } */
+  
+
 }
-#SubmitMessage:hover,button:hover, #Download:hover{
 
-color: #ffffff; 
-background-color: transparent; 
-border-radius: 0%;
+/*******************************************************Bio & Career***************************************************/
+
+
+#BioCareer{
+
+  padding: 20px 60px 40px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+#BioText{
+
+  padding-bottom: 30px;
+}
+.containerBio{
+    display:flex;
+  justify-content: center;
+  
 
 }
-
-#Download {
-
-  margin-top: 5%;
-margin-left: 50%;
-
-
+.containerBio div {
+  display :flex;
+  justify-content: center;
+  text-align: center;
+}
+#bioTextParagraph{
+  width: 70%;
+  text-align: center;
 }
 
 #CareerGoalDiv{
-
-margin-top: 10%;
- height: 55%;
-  width: 100%;
-  background-color: #EAE7E0; 
   
-  
-}
-
-#CareerGoalDiv p {
-
-  width: 30%;
-  margin-left: 35%;
-  color: #000000;
-}
-#CareerGoalPhoto{
-
-  width: auto;
-  height:30%;
-  margin-left: 37%;
-  margin-top: 3%;
-}
-
-.CarouseImages{
-
-  width: 100%;
-  min-height:100%
-  
-}
-
-.CarouseImages1{
-  width: auto;
- height:700px;
- 
- 
+  position: relative;
+  display:flex;
+  justify-content: space-between;
+  padding: 20px 60px 40px 60px;
+  overflow: hidden;
 
 }
 
-.buttonMobileApp:hover{
-
-background-color: black; 
-}
-
-.MobileApp{
-
-margin-left: 50%;
-margin-bottom: 20%;
-background-color: black;
-}
-
-#LastCarousel{
-
-  margin-bottom: 35%;
-  background-color: rgba(0, 0, 0, 0.7);
-  
- margin-left: 20%;
-  height: 80%;
-  width: 60%;
-  
-
-}
-#Carousel{
-
-  margin-top: 5%;
-}
-
-#Skills{
-margin-top: 5%;
-width: 100%;
-height: 70%;
-background-color: #000000;
-overflow-y:scroll;
-
-}
-
-#Skills:hover::-webkit-scrollbar{
-  display: block;
-}
-
-#Skills::-webkit-scrollbar {
-  
-  height: 10px;
- 
-}
-
-#Skills::-webkit-scrollbar-track {
-  
-  border-radius: 10px;
- 
-  background-color: darkgrey;
-  
-}
-
-#Skills::-webkit-scrollbar-thumb{
-  border-radius: 10px;
-  background-color:gray
-  
+#CareerGoalDiv div{
+  width:100%
 }
 
 
-#SkillCarousel{
-  
-  margin-top: 5%;
-    width: 75%;
-    height: 100%;
-    background-color: #EAE7E0;
-    box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.35);
-    margin-left: auto;
-    margin-right: auto;
-}
 
-/* carousel item */
- .card:first-child{
- margin-left: -5% ;
-}
-.card{
-    
-    margin-top: 3%;
-   background-color:transparent;
-   border-style:none;
-    height: 25%;
-    width: 11%;
-    float: left;
-    /*   margin-left: -50px; */
-      transition: 0.4s ease-out;
-      position: relative;
-      left: 50px;
-
-}
-.card:not(:first-child) {
-    margin-left: -15px;
-}
-
-.card:hover {
-    transform: translateY(-20px);
-    transition: 0.4s ease-out;
-  }
-  
-  .card:hover ~ .card {
-    position: relative;
-    left: 50px;
-    transition: 0.4s ease-out;
-  }
-
-  .card img{
-
-    width: auto;
-    height: auto; 
-    margin-top: auto;
-    margin-bottom: auto;
-    border-radius: 20px;
-    
-    box-shadow: -1rem 0 3rem #000;
-  }
-
- 
-  @media(max-width:1100px){
-
-    #Skills{
-      width:85%}
-    
-    .card{
-     
-     
-      width: 25%;
-    
-      margin-left: -2px;
+#CareerGoalsTitle{
+  padding-left: 60px;
   
   }
 
-
-  }
-
-  @media(max-width:500px) and (min-height:500px ){
-
-#Skills{width:100%;
-   height:110%;
-   overflow-y: hidden;
-   overflow-x: scroll;
-       }
-      
-      
-  #SkillCarousel{
-    width: 100%;
-    height: 107%;
-    
-   
-  }
-    .card{
-     
-      height: 12%;
-      width: 30%;
-    
-        
-  
-  }
-
-  
-  }
-
-
-
-
-
-  #SkillsPhoto{
-    width: auto;
-    height:30%;
-    margin-left: 50%;
-  }
-
-.skillsLogo{
-
-  height: 30%;
-  width: 40%;
-  margin: 3%;
-}
-
-#DiplomaCertif {
- width: 100%;
- height: 100%;
-
-}
-
-#DiplomaCertif div{
-width: 50%;
-float: left;
-box-sizing: 50%;
-margin-bottom: 10%;
-}
-
-#DiplomaCertif div button{
-
-  margin-left: 25%;
-  margin-top: 40%;
-  height: 400px;
-  width: 50%;
-  border-radius: 0%;
-  background-color: #EAE7E0;
-  transition: 1s;
-}
-
-#DiplomaCertif div button img{
-
- max-width: 100%;
- max-height: 100%;
-}
-
-
-
-#DiplomaCertif div button:hover{
-
-border-radius: 30%;  
-width: 60%;
-
-}
-
-
-
-
-
-
-
-#torontoCity{
- 
- height:40%; 
- width: 100%;
- margin-top: 15%;
- opacity: 0.5;
- overflow: hidden;
- 
-}
-
-#experience img{
-
-  
-  margin-left: 50%;
-  margin-top: 5%;
-}
-
-
-#experience p{
-
- 
-  margin-top: 3%;
-  margin-left: 35%;
-}
-
-#ContactMeImage,#experience img{
-  width: 20%;
-
-}
-
-#ContactMeImage {
-
-  margin-left: 10%;
-}
-
-.logoFooter{
-
-  width: 3%;
-  height: 3%;
-  margin-left: 5%;
-}
-.logoFooter, form input, #copyright, #Message{
-margin-left: 5%;}
-
-.inputClass{
-
-width: 40%;
-  height: 53px;
- color: white;
- background-color: transparent;
- border-style: solid white;
-}
-#SubmitMessage{
-  width: 15%; 
- 
-}
-form input, #Message{
-    
-  margin-top: 3%;
-}
-form{
-
-  margin-bottom: 5%;
-}
-
-#Message{
-
-height: 150px;
-
-}
-
-#copyright{
-margin-top: 3%;
-
-}
-
-#logoSocialMedia{
-margin-left: 50%;
-
-}
-
-.logoCopyright1, .logoCopyright2{
-  margin-left: 5%;
-  width: 5%;
-  height: 15%;
-  border-radius: 360px;
-  transition: 1s;
-}
-
-.logoCopyright1:hover, .logoCopyright2:hover{
-
-  transform: rotate(360deg);
-}
-
-.logoCopyright2{
-  width: auto;
-  height: 35px;
-}
-
-
-
-
-
-
-
-/* medium laptop*/
-@media (max-width: 1200px){
-  .CarouseImages1{
-    width: 55%;
-   height:auto;
-   
-   
-  
-  }
-
-  #CareerGoalDiv{
-
- 
-     height: 60%;
-    
-      
-      
-    }
-
-    #torontoCity{
- 
-      background-position: top ;
-     }
-     .mr-auto{
-      margin-left: 28%;
-      
-    } 
-
-    #CareerGoalPhoto , #experience img,#ContactMeImage{
-
-      width: 40%;
-      height:auto;
-      margin-left: 50%;
-      margin-top: 3%;
-    }
-    #SkillsPhoto{
-
-      width: 40%;
-      height:auto;
-      margin-left: 30%;
-      
-    }
-    #ContactMeImage{
-
-      
-      margin-left: 4%;
-      
-    }
-
-  
-    .MobileApp{
-
-   margin-right: 0%;
-   width: 50%;
-
-       }
-}
-
-
-
-
-
-@media (max-width: 1024px){
-
-  
-  #CareerGoalPhoto , #experience img,#ContactMeImage{
-
-    width: 50%;
-    height:auto;
-    margin-left: 20%;
-    margin-top: 3%;
-  }
-
-  #CareerGoalDiv{
-    width: 100%;
-    height: 35%;
-  } 
-  #CareerGoalDiv p{
-
-    width: 80%;
-    margin-left: 3%;
-    margin-top: 5%;
-  }
-
-
-
-
-  #basic-navbar-nav .mr-auto a:hover{
-    transform: scale(1.2);
-    
-  }
-  .mr-auto{
-    width: 30%;
-    
-  } 
- 
-    
-  #SkillsPhoto{
-
-    width: 77%;
-    height:auto;
-    margin-left: 0%;
-    
-  }
-  
-     #divOne h1{
-
-      
-      font-size: 100px;
-    
-      }
-     
-    
-    #imageMainMenu {
-    
-     
-      width: 60%;
-      height: 70%;
-      
-      
-     
-    }
-
-    
-
-
-
-#Skills p{
-
-width: 100%;
-height:auto;
-text-align: center;
-margin-left: 0%;
-}
-
-.skillsLogo{
-
-height: 30%;
-width: 40%;
-
-}
-
-
-    
-.CarouseImages{
-
- 
+/* #CareerGoalsDetails{
   height: 100%;
-  width: 100%;
- 
-
-}
-.MobileApp{
-
- background-color: black;
- 
- margin-bottom: 0%;
-  }
-
-  #DiplomaCertif{
-
-    height: 40%;
-   }
-   #DiplomaCertif div button{
-    
-     
-    height: 270px;
-    width: 50%;
-   
-   
-  }
-
-  .Dialogs img{
-    
-    width : 100%;
-  height: 60%;
   
-  
-  }
+} */
 
-
-
-  
-
+#CareerGoalsDetails div{
+  width:90%;
+  padding-bottom: 50px;
 }
 
 
+@media (min-height:750px){
 
-/* tablets ***************************************************************************************************************************/
-@media (max-width: 768px){
+#CareerGoalDiv{
 
+}
+#CareerGoalsTitle h2{
+  font-size: 4vh;
+}
+#CareerGoalsDetails div h4{
+  font-size: 3vh;
+}
+}
 
-.container{
-height: 40%;
-width: 100%;
+@media (max-width:980px){
 
+  #CareerGoalDiv{
+  padding-left: 0px;
+  padding: 20px 5px 40px 5px;
+  
+  }
+}
 
+@media (max-width:850px){
+  #BioCareer{
+
+    padding: 12px 5px 25px 5px;
+    text-align:center;
+
+  }
+
+  #BioText {
+
+  padding-bottom: 50px;
 }
 
 #bioTextParagraph{
-
-  
-  width: 50%;
-  float: right;
-  }
-
-  #BioPhoto{
-
-    width: 45%;
-    height: auto;
-    
-    margin-left: 0%;
-  
-    
-  }
-
-  #CareerGoalPhoto , #experience img,#ContactMeImage{
-
-    width: 60%;
-    height:auto;
-    margin-left: 20%;
-    margin-top: 3%;
-  }
-
-  #CareerGoalDiv{
-    width: 100%;
-    height: 40%;
-  } 
-  #CareerGoalDiv p{
-
-    width: 80%;
-    margin-left: 3%;
-    margin-top: 5%;
-  }
-
-  .CarouseImages1{
-
- 
-    height: auto;
-    
-   margin-bottom: 0%;
-  
-  }
-
- 
-
-  
-
-  .logoCopyright1{
-    
-    width: 10%;
-   
-  }
-
-  button{
-
-    width: 60%;
-  }
-  #SubmitMessage{
-
-    width: 20%;
-  }
-  form{
-
-    width: 130%;
-  }
-
-  #torontoCity{
- 
-    background-position:  top ;
-   }
-
-   #BioTextPhoto{
-
-    width: 50%;
-   }
-
-   .MobileApp  {
-
- width: 50%;
- margin-left: 40%;
-     }
-   
-     
-
-     #DiplomaCertif div button{
-    
-     
-      height: 250px;
-      width: 60%;
-     
-     
-    }
-  
-    
-    #torontoCity{
-     background-attachment: scroll !important;
-      
-     }
-  
-  }
-
-
-  /* Mobile Phone  ************************************************************************************************************************/
-@media (max-width:480px) {
-  
-#divOne{
-margin-top:23%;
-  margin-left: 10%;
+  width: 100%;
 }
 
-  #imageMainMenu {
-    
-     
-    width: 100%;
-    height: 100%;
-   
+#CareerGoalDiv{
+  padding-left: 0px;
+  display:block;
+  position:static;
+  padding: 20px 10px 40px 10px;
+  
   }
-
-  
-
-  #divOne h1{
-
-    
-    font-size: 40px;
-    
-    
-    
-    }
-
-    #divOne p{
-
-      width: 40%;
-    }
-
-    #bioTextParagraph{
-
-  
-      width: 100%;
-      
-      }
-      #BioPhoto{
-
-        width: 70%;
-        height: auto;
-        
-        margin-left: 0%;
-      margin-top: 5%;
-        
-      }
-
-     .container{
-      width: 100%;
-      height: 80% ;
-     
-     }
-
-     #CareerGoalPhoto , #experience img,#ContactMeImage{
-
-      width: 70%;
-      height:auto;
-      margin-left: 20%;
-      margin-top: 3%;
-    }
-  
-    #CareerGoalDiv{
-      width: 100%;
-      height: 60%;
-    } 
-    #CareerGoalDiv p{
-
-      width: 90%;
-      margin-left: 3%;
-      margin-top: 5%;
-    }
-
-    #Carousel{
-      height: 70%;
-
-    }
-
-    .CarouseImages{
-
- 
-      height: auto;
-      width: 100%;
-     margin-bottom: 0%;
-    
-    }
-   .carousel-item{
-   
-    margin-top: 120%;
-    
-    height: 100%;
-   }
-
-   
-   .carousel-caption{
-
-    margin-top:35%;
-    width: 75%;
-   }
-
-   .MobileApp, #LastCarousel{
-
-    background-color: black;
-    
-    margin-left: 0%;
-    width: 98%;
-   
-     }
-    
-
-
-.skillsLogo{
-
-  height: 30%;
-  width: 60%;
- 
-}
-
-#Download {
-
- 
-margin-left: 43%;
-
-
-}
-
-#Skills{
-  
+#CareerGoalsTitle{
+  padding-left: 0px;
+  line-height: 1;
+  text-align: center;
+  }
+#CareerGoalsTitle h2{
+  font-size: 8vh;
+}  
+#CareerGoalsDetails{
   height: 100%;
   
-  
-  }
-  
-  #arrow{
-    
-    margin-right: 3%;
-    
-  }
+}
 
-  #DiplomaCertif div{
+#CareerGoalsDetails div{
+  width:100%;
+  padding-bottom: 0px;
+  
+  /* text-align: right; */
+}
+
+
+
+}
+
+
+
+/********************************************************************Skills*****************************************/
+/* This called marquee == infinite scroll carousel*/
+
+#SkillsSection1{
+  padding: 20px 100px 40px 100px;
+}
+#SkillsSection1 p{
+  width:67%
+}
+#CarouselSection1{
+  padding-top: 1%;
+  width: 100%;
+  overflow: hidden;
+  height:50vh;
+  position: relative;
+  /* mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,1) 20%,
+    rgba(0,0,0,1) 80%,
+    rgba(0,0,0,0)
+  ); */
+  
+}
+
+#CarouselDiv1{
+  width: 100%;
+  height: 89%;
+  display: flex;
+  position: relative;
+  /* transition: transform 0.3s ease-in-out; */
+
+}
+@keyframes scroll {
+  
+
+  to{
+    transform: translateX(-39vh)
+  }
+}
+
+
+.CardClass1{
+
+  height: 100%;
+  width:39vh;
+  /* margin-left: 3vh; */
+  
+  position: absolute;
+  transform: translateX(max(calc(39vh*7),100%)); 
+  animation: scroll 10s linear infinite;
+  transition: all 0.3s ease-in-out;
+  background-position: fixed;
+  
+}
+
+.CardClass1.paused{
+
+  animation-play-state: paused;
+
+}
+
+#PlayStopCarousel{
+  /* border: 2px solid black;
+  border-radius: 10px; */
+  bottom: 0px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#PlayStopCarousel button{
+  padding: 1%;
+  transition: transform 0.2s ease-in-out;
+}
+#PlayStopCarousel button:hover{
+  transform: scale(90%,90%);
+}
+
+@media (max-width:1100px) {
+  
+
+  #SkillsSection1 p{
+    width:90%
+  }
+}
+
+@media (max-width:850px) {
+  
+  #SkillsSection1{
+    padding: 12px 10px 14px 10px;
+  }
+  #SkillsSection1 p{
+    width:100%
+  }
+}
+
+@media (min-height:675px) {
+  #CarouselSection1{
+    height: 47vh;
+  }
+}
+
+/****************************************************Experience Section****************************************************/
+
+
+
+
+#TitleExperience{
+  margin-top: 10%;
+  margin-bottom: 5%;
+  line-height: 0.9;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  
+}
+
+.ExpereciencesContainer {
+
+    height: 80%;
+  width: 100%;
+}
+
+
+
+
+
+/********************************************************************HeroSection2****************************************************/
+
+
+#HeroDiv2{
+
+  width: 100%;
+  height:100vh;
+  overflow: hidden;
+  position: relative;
+  /* padding: 5% 7% 0% 7%; */
+  display: flex;
+}
+
+
+.titleHeroDiv2,.imgOrvid-carousel2{
+
+  height: 100%;
+  width: 50%;
+
+}
+#HeroDiv2-content2{
+  top: 24%;
+  position: relative;
+  mix-blend-mode: difference;
+  padding-left: 10%;
+  
+}
+#HeroDiv2-content2 p{
+  width: 80%;
+  color:#ffffff;
+  
+}
+.titleHeroDiv2 h3, .titleHeroDiv2 p{
+  position: relative;
+  left: 14vh;
+  top:10%;
+  
+}
+.titleHeroDiv2 p{
+  
+  width: 80%;
+}
+.titleHeroDiv2 p h6{
+  letter-spacing: 0px;
+}
+.imgOrvid-carousel2{
+  position: relative;
+}
+.carousel2-content{
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: translate(0%,100%);
+  transition: transform 0.4s ease-in-out;
+  position: absolute;
+}
+
+.carousel2-content video{
+  object-fit: cover;
+  position: absolute;
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel2-content.open video{
+  /* object-fit: cover;
+  position: absolute;
+  min-width: 100%;
+  height: 100%; */
+
+}
+.carousel2-content.open{
+  transform: translate(0%,0%);
+}
+#iconsHeroDiv2{
+  position: absolute;
+  bottom: 5%;
+  left: 12vh;
+  width: 40%;
+  display: flex;
+  
+}
+/* #TitleHeroDiv2{
+  left: ;
+} */
+.carousel2Span{
+
+  background-color: #ffffff;
+  border-radius: 360px;
+  width: 20%;
+  height: 20%;
+  display: flex;
+
+}
+.carousel2Btn{
+  
+  border-radius: 360px;
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.carousel2Btn.open{
+  border: 3px solid white;
+}
+
+#Carousel2-Number{
+  
+  position: absolute;
+  bottom: -15%;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 13;
+
+}
+#Carousel2-Number h1{
+  color: white;
+  font-size: 39vh;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
+}
+
+.mobileHeroDiv2{
+  width: 100%;
+
+}
+
+@media(max-width:1050px){
+  #HeroDiv2-content2{
+    top:12%
+  }
+  .titleHeroDiv2 h3, .titleHeroDiv2 p{
+      
+      left: 9vh;
+
+  }
+.titleHeroDiv2 h3{
+  font-size: 6vh;
+}
+#HeroDiv2-content2 p{
+  
+  width: 95%;
+}
+
+}
+@media (max-width:850px){
+
+
+  .carousel2-content{
     width: 100%;
 
   }
+  #HeroDiv2-content2{
+    position: absolute;
+    
+    top:19%;
+    width: 100%;
+    z-index: 13;
+    
+    /* text-shadow: 1px 1px 0px #fff; */
+    /* left:50%; */
+    transform: translateX(0%);
+      /* padding-left: 0%; */
+  margin-left: auto;
+  margin-right: auto;
+    
+  }
+  #HeroDiv2-content2 p{
+    width: 100%;
+  }
+  .titleHeroDiv2 h3, .titleHeroDiv2 p{
+    position: relative;
+    
+  }
 
-
-   #DiplomaCertif div button{
+#iconsHeroDiv2{
   
+  bottom: 6%;
+  left: 7vh;
+  width: 21%;
+  
+}
+  
+
+  #Carousel2-Number{
+    
+    left:90%;
+    transform: translateX(-90%);
+    bottom: -10%;
+  }
+  #Carousel2-Number h1{
+    
+    font-size: 30vh;
+    
    
-    height:   200px;
+  }
+
+}
+
+@media (max-width:750px){
+
+  #HeroDiv2-content2{
+    
+    /* padding-left: 0%; */
+    top:23%;
+    /* width: 126% */
+
+    
+    
+  }
+  .imgOrvid-carousel2{
+  width: 70%;
+}
+.titleHeroDiv2{
+  width: 40%;
+}
+    .titleHeroDiv2 h3, .titleHeroDiv2 p{
+    position: relative;
+    left: 1vh;
+  }
+    .titleHeroDiv2 h3{
+    
+    font-size: 4vh;
+    width: 100%;
+    
+  }
+
+  #Carousel2-Number{
+    
+    right:3vh;
+    transform: translateX(-97%);
+    bottom: 2%;
+  }
+  #Carousel2-Number h1{
+    
+    font-size: 10vh;
+    
+   
+  }
+
+
+.carousel2Btn{
+  
+  border-radius: 360px;
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+/* .carousel2Btn.open{
+  border: 3px solid white;
+} */
+
+/* 
+  #HeroDiv2-content2{
+
+    top:30%;
+    position: absolute;
+    width: 80%;
+    z-index: 13;
+    text-align: left;
+    text-shadow: 2px 2px 0px #fff;
+    
+    
+  }
+  .titleHeroDiv2 h3, .titleHeroDiv2 p{
+    position: relative;
+    left: 1vh;
+  }
+
+  .titleHeroDiv2 h3{
+    
+    font-size: 4vh;
+    width: 100%;
+    
+  }
+  .titleHeroDiv2 p{
+    
+    width: 100%;
+    
+  }
+
+  #Carousel2-Number{
+    
+    left:97%;
+    transform: translateX(-97%);
+    bottom: -10%;
+  }
+  #Carousel2-Number h1{
+    
+    font-size: 25vh;
+    
+   
+  } */
+
+}
+
+@media (max-width:670px){
+    #HeroDiv2-content2{
+      position: relative;
+      transform:translateX(0%);
+      padding-left: 0%;
+      top:20%;
+      text-align: center;
+    }
+    .mobileHeroDiv2 h3{
+    
+    font-size: 5vh;
     width: 70%;
-   margin-left : 16%;
-   border-radius: 5%;
-  }
-  
-
-
-  #experience p{
-margin-left: 7%;
-
-  }
-  #ContactMeImage{
-    margin-left: 2%;
-  }
-
-  form{
-
-    width: 170%;
-  }
-
-  .logoCopyright1{
-    width: 20%;
     
   }
-  #logoSocialMedia{ margin-left: 40%;}
+#HeroDiv2-content2 p{
 
-.Footer{
-
-  height: 30%;
-}
-
-#SubmitMessage,button{
-
- 
-  background-color: #ffffff; 
- 
-  
-  }
+  width: 100%;
 
 }
+.PeriodExpericence{
 
-@media (max-width: 320px) {
-  .container{
-    width: 100%;
-    height: 90% ;
-   
-   }
-   #CareerGoalDiv{
-    width: 100%;
-    height: 70%;
+  padding-left: 10px;
+  line-height: 1;
+}
+.PeriodCompanyDiv{
+  margin-bottom: 20px;
+}
+  #iconsHeroDiv2{
+    z-index: 13;
+    left:2vh;
   }
+  #Carousel2-Number{
+    right: -4vh;
+  }
+}
+
+@media (max-width:270px){
+  #HeroDiv2-content2{
+    top:10%
+  }
+}
+
+@media (min-height:730px){
+
+
+#HeroDiv2-content2 h4{
+  font-size: 4vh;
+}
+  .titleHeroDiv2 h3, .titleHeroDiv2 p{
+    left: 14px;
+  }
+  .titleHeroDiv2 h3{
+    font-size: 5vh;
+  }
+  #Carousel2-Number h1{
+    font-size:20vh
+  }
+  #Carousel2-Number{
+    bottom: -5%;
+  }
+  #iconsHeroDiv2{
+    left: 14px;
+  }
+  .carousel2Btn{
+    width:5vh;
+    height: 5vh;
+  }
+  #Carousel2-Number{
+    right: -99.84px;
+  }
+}
+
+/* /************************************************************Projects************************************************************ */
+
+
+section.py-24 {
+    width: 100%;
+    /* height: 65vh; */
+    padding: 70px 22px 67px 22px
+}
+
+.flex.justify-center.items-center.gap-x-5.gap-y-8.lg\:gap-y-0.flex-wrap.md\:flex-wrap.lg\:flex-nowrap.lg\:flex-row.lg\:justify-between.lg\:gap-x-8 {
+    padding-top: 1%;
+    height: 90%;
+}
+
+.group.relative.w-full.bg-gray-100.rounded-2xl.p-4.transition-all.duration-500.max-md\:max-w-md.max-md\:mx-auto.md\:w-2\/5.md\:h-64.xl\:p-7.xl\:w-1\/4.hover\:bg-indigo-600{
+
+    padding: 0 1vh 5vh 1vh;
+    width: 100%;
+    /* height: 66%; */
+    display: flex;
+    align: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
   
-  #Skills{
+    flex-direction: column;
+    align-content: center;
+}
 
-    height: 70%;
+.ProjectDivLinks {
+    display: flex;
+    justify-content: space-evenly;
+}
+.ProjectDivLinks a{
+  text-decoration: underline;
+}
+
+.ProjectDivLinks button {
+
+    color: white;
+    background-color: purple;
+    width: 129px;
+    border-radius: 67px;
+    height: 33px;
+    transition: transform 0.4s ease-in-out;
+}
+
+.ProjectDivLinks button:hover{
+  transform: scale(95%,95%);
+ 
+}
+
+
+@media (max-width:920px) {
+
+  section.py-24{
+    padding: 70px 10px 67px 10px;
+    /* height: 91%; */
   }
+  .flex.justify-center.items-center.gap-x-5.gap-y-8.lg\:gap-y-0.flex-wrap.md\:flex-wrap.lg\:flex-nowrap.lg\:flex-row.lg\:justify-between.lg\:gap-x-8 {
+    
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.ProjectDivLinks {
+    display: flex;
+    justify-content: flex-start;
+}
+.ProjectDivLinks button{
+      margin-left: 1%;
+}
+}
+
+.Sidebar{
+  padding-left: 3%;
+  background-color: #000;
+}
+.Sidebar p{
+  width: 50%;
+  padding-top: 1%;
+}
+.Sidebar img {
+  padding-top: 3%;
+}
+button.p-sidebar-close.p-sidebar-icon.p-link {
+    color: white;
+    /* width: 44px; */
+}
+button.p-sidebar-close.p-sidebar-icon.p-link svg{
+  width: 25px;
+  height: 25px;
+}
+
+
+/**********************************************************Footer**********************************************/
+ #ContactFormDiv{
+  width: 100%;
+  /* height: 85%; */
+  color: white;
+
+  position: relative;
+ }
+
+ #ContactForm{
+  mix-blend-mode: difference;
+    margin: 70px 100px 67px 100px;
+        padding: 6%;
+    width: 50%;
+      -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background-color: transparent;
+  border-radius: 59px;
+    border: 1px solid;
+ }
+
+#ContactForm div {
+    margin-bottom: 29px;
+}
+
+#ContactForm input, #ContactForm textarea {
+    border: 2px solid white;
+    border-radius: 7px;
+    width: 100%;
+    height: 55px;
+    padding: 4%;
+    margin-top: 2%;
+}
+
+#ContactForm textarea {
+    height: 180px;
+}
+
+.labelContactForm{
+  /* padding-bottom: 1%; */
+}
+
+form#ContactForm button {
+    color: black;
+    background: white;
+    width: 100%;
+    height: 55px;
+    border-radius: 7px;
+    transition: transform 0.4s ease-in-out;
+}
+
+form#ContactForm button:hover {
+  transform:scale(90%,90%)
+}
+#animationCoverContactForm{
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}  
+
+@media (max-width:830px) {
+  #ContactForm{
+        width: 69%;
+  }
+}
+
+@media (max-width:750px) {
+  #ContactForm{
+        width: 69%;
+        margin : 70px 10px 67px 10px;
+  }
+}
+
+@media (max-width:480px) {
+
+    #ContactForm{
+        width: 92%;
+        
+  }
+}
+
+@media (min-height:800px) {
+  form#ContactForm h3 {
+    font-size: 4vh;
+}
+}
+#Footer1{
+  width: 100%;
+  display:flex;
+    height: 46%;
+    padding: 30px 100px 0px 100px;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.OtherLinks{
+      display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+#AllRightReserved{
+  width: 100%;
+  padding: 20px 100px 40px 100px;
+  height: 25%;
+  text-align: center;
+  
+}
+
+.LogoFooterDiv {
+
+  padding-bottom: 5%;
+}
+
+#AllRightReserved hr{
+
+      background-color: rgba(255, 255, 255, 0.4);
+    
+    height: 1px;
+}
+
+#AllRightReserved p{
+  padding-top: 2%;
+}
+
+@media (max-width:750px) {
+
+  #Footer1{
+ 
+    padding: 30px 70px 0px 70px;
+
+  }
+  #AllRightReserved{
+    padding: 20px 70px 40px 70px;
+    
+  }
+  .LogoFooterDiv {
+
+    padding-bottom: 12%;
+  }
+
+}
+
+@media (max-width:630px) {
+  #Footer1 {
+    display: block;
+    height: 40%;
+    padding: 30px 40px 0px 40px;
+  }
+  .LogoFooterDiv{
+    display: flex;
+    justify-content: center;
+        padding-bottom: 8%;
+  }
+  .OtherLinks{
+    justify-content: space-between;
+  }
+
+}
+
+@media (max-width:450px) {
+
+    #Footer1 {
+    display: block;
+    height: 35%;
+    padding: 30px 10px 0px 10px;
+  }
+  .OtherFooterDiv ul h5{
+    font-size: 1.5vh;
+  }
+    #AllRightReserved {
+        padding: 20px 10px 40px 10px;
+        height: 17%;
+    }
+}
+
+@media (min-height:1100px) {
+  #Footer1{
+    height: 32%;
+  }
+    .OtherFooterDiv ul h5{
+    font-size: 2vh;
+  }
+}
+#ToastNotif{
+
+}
+.p-toast-detail {
+     background-color: white;
+    color: black;
+    padding: 5%;
+    border-radius: 14px;
+    border: 1px solid black;
+    height: 100px;
+    
+    
 }
