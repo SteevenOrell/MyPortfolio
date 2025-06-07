@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import Spline from '@splinetool/react-spline';
-
+import FooterSectionMP4 from "./assets-copy/lightning-bulb.mp4";
 import LogoImg from './assets-copy/SteevenWeminLogo.jpg';
 import emailjs from '@emailjs/browser';
 import { Toast } from 'primereact/toast';
@@ -49,8 +49,11 @@ function Footer()  {
         <>
             <Toast ref={toast} id='ToastNotif' style={styleCSS}/>
             <div id='ContactFormDiv'>
-                <div id="animationCoverContactForm"><Spline scene="https://prod.spline.design/Sm5vOdV9GRCoaAQN/scene.splinecode" /> </div>
-
+                <div id="animationCoverContactForm"> 
+                    <video autoPlay loop muted playsInline>
+                            <source src={FooterSectionMP4} type="video/mp4"/>
+                </video></div>
+                {/* <Spline scene="https://prod.spline.design/Sm5vOdV9GRCoaAQN/scene.splinecode" />  */}
                 <form id='ContactForm'ref={form} onSubmit={sendEmail} method='POST'>
                     <h3><i>CONTACT ME</i></h3>
                     <div>

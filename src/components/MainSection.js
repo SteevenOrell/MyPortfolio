@@ -2,7 +2,7 @@ import {React} from "react";
 import Spline from '@splinetool/react-spline';
 import { motion, AnimatePresence } from "motion/react"
 import { FadeInAnimation } from "./FadeInAnimation";
-
+import mainHeroSectionMP4 from "./assets-copy/abstractBackground.mp4";
 function MainSection(){
 
 
@@ -23,7 +23,9 @@ function MainSection(){
             </div>
             
             <div className="Hero1Animation3D">
-                <Spline scene="https://prod.spline.design/EDAfnUxTAH9Rinj1/scene.splinecode" />
+                <video autoPlay loop muted playsInline>
+                            <source src={mainHeroSectionMP4} type="video/mp4"/>
+                </video>
 
 
             </div>
