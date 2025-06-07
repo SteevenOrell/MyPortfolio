@@ -58,11 +58,11 @@ function Footer()  {
                     <h3><i>CONTACT ME</i></h3>
                     <div>
                         <label className='labelContactForm'> Name</label><br/>
-                        <input text='name' placeholder='Your name' name="name" required/> <br/>
+                        <input type='name' placeholder='Your name' name="name" required/> <br/>
                     </div>
                     <div>
                         <label className='labelContactForm'> Email</label><br/>
-                        <input text='email' placeholder='Let connect via email' name='email'  required/> <br/>
+                        <input type='email' placeholder='Let connect via email' name='email'  required/> <br/>
                     </div>
                     <div>
                         <label className='labelContactForm'> Your Message</label><br/>
