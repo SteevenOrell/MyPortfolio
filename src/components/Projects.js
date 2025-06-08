@@ -126,7 +126,7 @@ const Project = () => {
                 </p>
               </div>
               <div className='ProjectDivLinks'> 
-                <a href=''><i>VIEW PROJECT</i></a> <br/>
+                <a href={feature.link}><i>VIEW PROJECT</i></a> <br/>
                 <button id={`img_${index}`} onClick={(e) =>{setVisible(true); setCurrentProjectDisplay(e.target.id.split("_")[1])}}> PREVIEW</button>
               </div>
             </div>}
