@@ -12,7 +12,7 @@ import Skills from './components/Skills';
 import BioCareerGoals from './components/BioCareerGoals';
 import Project from './components/Projects';
 import Footer from './components/footer';
-
+import CareerGoalsServices from './components/CareerGoalsServices';
 
 
 class App extends React.Component {
@@ -29,11 +29,12 @@ class App extends React.Component {
     
     <NavB/>
     <MainSection/>
+     <Experiences/>
+    <Project/>
     <BioCareerGoals/>
     
     <Skills/>
-    <Experiences/>
-    <Project/>
+    <CareerGoalsServices/>
     <Footer/>
     
    

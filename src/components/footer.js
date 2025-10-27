@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 
-import Spline from '@splinetool/react-spline';
+
 import FooterSectionMP4 from "./assets-copy/lightning-bulb.mp4";
 import LogoImg from './assets-copy/SteevenWeminLogo.jpg';
 import emailjs from '@emailjs/browser';
 import { Toast } from 'primereact/toast';
+
 
 function Footer()  {
     const form = useRef();
@@ -13,7 +14,7 @@ function Footer()  {
 
     function sendEmail(e){
     e.preventDefault();
-        console.log(process.env.REACT_APP_EMAILJS_SERVICE_ID,)
+        
         emailjs
         .sendForm(
             process.env.REACT_APP_EMAILJS_SERVICE_ID,
@@ -31,7 +32,7 @@ function Footer()  {
             form.current.reset(); // Optionally reset the form
             },
             (error) => {
-            //console.log('FAILED...', error.text);
+            //console.log('FAILED...', error);
 
             toast.current.show({severity:'error', summary: '', detail:'Failed to send message', life: 3000});
 
@@ -54,6 +55,7 @@ function Footer()  {
                             <source src={FooterSectionMP4} type="video/mp4"/>
                 </video></div>
                 {/* <Spline scene="https://prod.spline.design/Sm5vOdV9GRCoaAQN/scene.splinecode" />  */}
+                
                 <form id='ContactForm'ref={form} onSubmit={sendEmail} method='POST'>
                     <h3><i>CONTACT ME</i></h3>
                     <div>
@@ -70,11 +72,12 @@ function Footer()  {
                     </div>
                     <button>Submit</button>
                 </form>
+               
             </div>
            
 
 
-  <footer id="Footer1" class="w-full">
+  <footer id="Footer1" className="w-full">
             <div className='LogoFooterDiv'>
                 <li> <a href='#'><img id='HomeLogo' src={LogoImg} alt='Home logo' width="150" height="150" /></a></li>
                 
@@ -100,10 +103,10 @@ function Footer()  {
             </div>
                 <div className='OtherFooterDiv'>
                 <ul>
-                    <h5> Social network</h5>
-                    <li> <a href='https://www.linkedin.com/in/orell-wemin-8519a5179'><p>LinkedIn</p></a></li>
-                    <li> <a href='https://github.com/SteevenOrell/'><p>Github</p></a></li>
-                    <li> <a href='https://www.freelancer.com/u/JuniOrell'><p>Freelancer</p></a></li>
+                    <h5> Social Network</h5>
+                    <li> <a href='https://www.linkedin.com/in/orell-wemin-8519a5179' target='_blank'><p>LinkedIn</p></a></li>
+                    <li> <a href='https://github.com/SteevenOrell/' target='_blank'><p>Github</p></a></li>
+                    <li> <a href='https://www.freelancer.com/u/JuniOrell' target='_blank'><p>Freelancer</p></a></li>
                 </ul>
             </div>
             </div>
@@ -111,7 +114,7 @@ function Footer()  {
     
      <div id='AllRightReserved'>
         <hr/>
-        <p>© {new Date().getFullYear()} all right reserved to Steeven Orell WEMIN</p>
+        <p>© {new Date().getFullYear()} all right reserved to Orell WEMIN</p>
     </div>   
         
         </>);

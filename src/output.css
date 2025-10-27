@@ -8,27 +8,21 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-indigo-600: oklch(51.1% 0.262 276.966);
-    --color-indigo-700: oklch(45.7% 0.24 277.023);
     --color-gray-100: oklch(96.7% 0.003 264.542);
-    --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-900: oklch(21% 0.034 264.665);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-md: 28rem;
     --container-lg: 32rem;
-    --container-xl: 36rem;
     --container-7xl: 80rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-normal: 400;
-    --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --radius-2xl: 1rem;
@@ -204,6 +198,9 @@
   }
   .flex {
     display: flex;
+  }
+  .h-0 {
+    height: calc(var(--spacing) * 0);
   }
   .h-full {
     height: 100%;
@@ -1073,6 +1070,8 @@ img, video {
   position: absolute;
 }
 .Carousel1-content {
+  position: absolute;
+  z-index: 12;
   line-height: 1px;
   line-height: 1;
   margin-left: 0%;
@@ -1085,6 +1084,12 @@ img, video {
 }
 .Carousel2-content h3, .Carousel2-content p {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.Hero1Animation3D video {
+  object-fit: cover;
+  position: absolute;
+  min-width: 100%;
+  height: 100%;
 }
 .Hero1Animation3D,.Hero2Animation3D {
   top: 40px;
