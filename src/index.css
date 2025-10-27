@@ -2309,7 +2309,7 @@ overflow: hidden;
      mix-blend-mode:difference;
   border-radius: 59px;
     border: 1px solid;
-mix-blend-mode: multiply;
+
     isolation: isolate; 
     opacity: 1;
  }
