@@ -1778,9 +1778,9 @@ z-index: 1;
   left:387px;
   
   
-  background-color: transparent;
- 
-  mix-blend-mode: multiply;
+  /* background-color: transparent;
+  */
+  mix-blend-mode: difference;
   width:545px; 
   height:293px;
   -webkit-backdrop-filter: blur(4px);
@@ -2305,8 +2305,8 @@ overflow: hidden;
     width: 50%;
       -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  background-color: transparent;
-    -webkit-backdrop-filter: blur(4px);
+  /* background-color: transparent; */
+     mix-blend-mode:difference;
   border-radius: 59px;
     border: 1px solid;
 mix-blend-mode: multiply;
