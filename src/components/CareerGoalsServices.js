@@ -39,8 +39,8 @@ function CareerGoalsServices()  {
                                     
                                     return(                
                                     
-                                        <button  key={`carousel2Btn-${content.title}-${index}`} id={`carousel2Btn-${index}`} className={ currentCarousel == index ? `carousel2Btn open`: "carousel2Btn"} onClick={(e)=>handleCarouselChange(e)}>
-                                            <span id={`carousel2Span-${content.title}-${index}`} className="carousel2Span" >
+                                        <button  key={`carousel2Btn-${content.title}-${index}`} id={`carousel2Btn-${index}`} className={ currentCarousel == index ? `carousel2Btn open`: "carousel2Btn"} onClick={(e)=>handleCarouselChange(e)} onPointerEnter={(e)=>handleCarouselChange(e)}>
+                                            <span id={`carousel2Span-${index}`} className="carousel2Span" onClick={(e)=>handleCarouselChange(e)} onPointerEnter={(e)=>handleCarouselChange(e)}>
                                                 
                                             </span>
                                         </button>

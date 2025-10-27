@@ -1508,7 +1508,9 @@ text-align: center;
 .PrevNextBtn2 button:hover{
   background-color: rgba(255, 255, 255, 0.478);
 }
-
+#prevArrowBtn2{
+  transform: rotate(0deg) !important;
+}
 @media (max-width:850px){
   
   .CarouselSection2{
@@ -2224,6 +2226,12 @@ video#videoCard_1 {
   #CareerGoalsTitle, .careerGoalParagraph {
         padding-left: 18px;
     }
+    #CareerGoalDiv{
+  mask-image: linear-gradient(black 67%, transparent 102%);
+ 
+  -webkit-mask-image: linear-gradient(black 67%, transparent 102%);
+ 
+}
   .careerGoalImgTitle {
     width: 76%;
   }
@@ -2247,6 +2255,7 @@ video#videoCard_1 {
     z-index: 1;
     bottom: -30px;
    }
+   
 }
 @media (max-width:385px) {
   /* .careerGoalImgTitle h1 {
