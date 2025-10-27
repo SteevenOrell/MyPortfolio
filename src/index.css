@@ -1777,10 +1777,9 @@ z-index: 1;
   top: 285px;
   left:387px;
   
-  mix-blend-mode: difference;
+  
   /* background-color: transparent; */
-    -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+ 
   background-color: rgba(255, 255, 255, 0.01) !important;
   width:545px; 
   height:293px;
@@ -1802,10 +1801,10 @@ z-index: 1;
    color: #ffffff;
    /* text-shadow: 3px 2px 4px rgba(0, 0, 0, 1); */
    /* width: 545px; */
-
+  mix-blend-mode: difference;
 }
 .TitleProject-variant h3, .TitleProject-variant p{
-
+mix-blend-mode: difference;
   /* left:27px; */
    color: #ff4937;
    /* width: 545px; */
@@ -2300,7 +2299,7 @@ overflow: hidden;
  }
 
  #ContactForm{
-  mix-blend-mode: difference;
+  
     margin: 70px 100px 67px 100px;
         padding: 6%;
     width: 50%;
@@ -2317,6 +2316,7 @@ overflow: hidden;
 
 #ContactForm div {
     margin-bottom: 29px;
+    
 }
 
 #ContactForm input, #ContactForm textarea {
@@ -2326,6 +2326,7 @@ overflow: hidden;
     height: 55px;
     padding: 4%;
     margin-top: 2%;
+    mix-blend-mode: difference;
 }
 
 #ContactForm textarea {
