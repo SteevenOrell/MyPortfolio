@@ -2004,7 +2004,7 @@ video#videoCard_1 {
       height: 54px;
         left: 50%;
         /* margin: auto; */
-        
+        top:270px;
         transform: translate(-50%, 0%);
         width: 172px;
   }
