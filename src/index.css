@@ -1945,6 +1945,9 @@ button.p-sidebar-close.p-sidebar-icon.p-link svg{
         width: 306px;
         left: 203px;
     }
+    .TitleProject-variant p{
+        display: none;
+    }
 }
 
 @media (max-width:550px){
@@ -1997,18 +2000,20 @@ video#videoCard_1 {
         min-height: 94%;
     }
   .TitleProject-variant {
-        width: auto;
-        left: auto;
-        width: 263px;
-        height: 150px;
+      height: 54px;
+        left: 50%;
+        /* margin: auto; */
+        
+        transform: translate(-50%, 0%);
+        width: 172px;
   }
   .TitleProject{
-    left: 12px;
+    left: 15px;
     width: auto;
     padding-right: 10px;
     height: auto;
   }
-   .TitleProject-variant p{
+   .TitleProject-variant h3{
     display:none
    }
 }
