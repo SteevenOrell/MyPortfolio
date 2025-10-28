@@ -1944,6 +1944,7 @@ button.p-sidebar-close.p-sidebar-icon.p-link svg{
     .TitleProject-variant {
         width: 306px;
         left: 203px;
+        height: 167px;
     }
     .TitleProject-variant p{
         display: none;
@@ -2399,7 +2400,7 @@ form#ContactForm button:hover {
   #animationCoverContactForm{
     width: 100%;
     height: 50%;
-    top:20%;
+    top:51%;
     mask-image: linear-gradient(transparent 0%, black 12%);
     -webkit-mask-image: linear-gradient(transparent 0%, black 12%);
   }
