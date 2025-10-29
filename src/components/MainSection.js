@@ -33,7 +33,7 @@ function MainSection(){
                       <span id="helloSpan">WELCOME</span>
                     </h3>
                     </FadeInAnimation>
-                    <FadeInAnimation ><h5> TO MY WORD </h5></FadeInAnimation>
+                    <FadeInAnimation ><h5> TO MY WORLD </h5></FadeInAnimation>
                     
                     
             </div>
