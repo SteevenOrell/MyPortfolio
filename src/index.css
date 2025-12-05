@@ -2016,10 +2016,15 @@ video#videoCard_1 {
     width: auto;
     padding-right: 10px;
     height: auto;
+    top: 182px;
   }
    .TitleProject-variant h3{
     display:none
    }
+
+   #videoCard_2 {
+    transform: translate(-50%) rotate(0deg);
+  }
 }
 
 @media (max-width:275px){
@@ -2092,7 +2097,7 @@ video#videoCard_1 {
 }
 .CareerGoalsDetails{
   width: 100%;
-  height: 80%;
+  height: 667.38px;
   /* display: flex; */
   position: relative;
 }
@@ -2262,7 +2267,7 @@ video#videoCard_1 {
   }
    .careerGoalParagraph h2{
     line-height: 1;
-        font-size: 60.52px;
+        font-size: 54.5px;
    }
    #iconsHeroDiv2{
     z-index: 1;
