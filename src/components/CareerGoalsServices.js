@@ -20,10 +20,20 @@ function CareerGoalsServices()  {
 
     }    
     return (<>
-    
+
 
             <div id="CareerGoalDiv" >
-                
+
+                <div className="careerGoalsMobile">
+                    <h2><i>Career Goals</i></h2>
+                    {carouselContents.map((content, index) => (
+                        <div key={`mobile-goal-${index}`} className="careerGoalsMobile__item">
+                            <h3>{content.title}</h3>
+                            <p>{content.description}</p>
+                        </div>
+                    ))}
+                </div>
+
                 <div className='CareerGoalsDetails'  >
                     <div className="careerGoalParagraph" >   
                      

@@ -3043,6 +3043,9 @@ video#videoCard_1 {
   height: 80%;
   position: relative;
 }
+.careerGoalsMobile {
+  display: none;
+}
 
 .careerGoalParagraph{
   position: absolute;
@@ -3187,46 +3190,39 @@ video#videoCard_1 {
 }
 @media(max-width:500px){
   #CareerGoalDiv {
-    height: 680px;
-    mask-image: linear-gradient(black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(black 70%, transparent 100%);
+    height: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+    padding: 48px 24px 64px;
   }
   .CareerGoalsDetails {
-    height: 100%;
+    display: none;
   }
-  .careerGoalParagraph {
-    top: 156px;
-    height: auto;
-    width: 90%;
-    padding-left: 32px;
-    padding-right: 18px;
+  .careerGoalsMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    color: white;
   }
-  .careerGoalParagraph h2 {
-    margin-bottom: 16px;
+  .careerGoalsMobile h2 {
+    font-size: 36px;
+    font-style: italic;
+    margin-bottom: 32px;
   }
-  .careerGoalParagraph p {
+  .careerGoalsMobile__item {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 24px 0;
+  }
+  .careerGoalsMobile__item h3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #ff4937;
+    margin-bottom: 10px;
+  }
+  .careerGoalsMobile__item p {
     font-size: 15px;
-    text-shadow: 1px 1px 8px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,1);
-  }
-  #iconsHeroDiv2 {
-    position: relative;
-    bottom: auto;
-    margin-top: 24px;
-    z-index: 10;
-  }
-  .carousel2Btn {
-    width: 44px;
-    height: 44px;
-  }
-  .careerGoalImgTitle {
-    width: 85%;
-  }
-  .Carousel2-Number {
-    bottom: 160px;
-    right: 20px;
-  }
-  .careerGoalImgTitle h1{
-    font-size: 59px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
   }
 }
 
@@ -3236,49 +3232,6 @@ video#videoCard_1 {
   }
 }
 
-@media (max-width:400px) {
-
-  .careerGoalImgTitle h1{
-    /* font-size: 55px; */
-    right: 30px;
-    mix-blend-mode: initial;
-    color: #ffffff;
-  }
-  .Carousel2-Number {
-    mix-blend-mode: initial;
-    color: #ffffff;
-  }
-}
-@media (max-width:385px) {
-   .careerGoalParagraph{
-    width:auto
-  }
-  .Carousel2-Number {
-    bottom: 155px;
-  }
-  .careerGoalParagraph h2{
-    text-align: center;
-  }
-}
-
-@media (max-width:345px) {
-  .careerGoalImgTitle {
-    width: 90%;
-  }
-}
-
-@media(max-width:250px){
-  #CareerGoalDiv{
-    width:500px
-  }
-  .careerGoalParagraph{
-    top: 139px;
-  }
-  #iconsHeroDiv2 {
-      
-      bottom: -5px;
-  }
-}
 /**********************************************************Footer**********************************************/
  #ContactFormDiv{
   width: 100%;
