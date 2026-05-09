@@ -3241,7 +3241,12 @@ video#videoCard_1 {
   .careerGoalImgTitle h1{
     /* font-size: 55px; */
     right: 30px;
-    /* mix-blend-mode: initial; */
+    mix-blend-mode: initial;
+    color: #ffffff;
+  }
+  .Carousel2-Number {
+    mix-blend-mode: initial;
+    color: #ffffff;
   }
 }
 @media (max-width:385px) {
