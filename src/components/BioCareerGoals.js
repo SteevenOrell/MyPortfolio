@@ -1,34 +1,49 @@
 import { FadeInAnimation } from './FadeInAnimation';
+import bioBg from './assets-copy/ElevenLabs_video_seedance-2-0_the wind sho..._2026-05-08T21_21_14.mp4';
 
-function BioCareerGoals()  {
+const stats = [
+  { value: '4+',  label: 'Years Experience' },
+  { value: '15+', label: 'Projects Delivered' },
+  { value: '8+',  label: 'Technologies' },
+];
 
-        return (<>
-        <div  id="BioCareer">
+function BioCareerGoals() {
+  return (
+    <div id="BioCareer">
 
+      <div className="BioVideoBg">
+        <video autoPlay loop muted playsInline src={bioBg} />
+      </div>
 
-            <div className="BioText">
-            
-                <h3><i> <FadeInAnimation> {"About me"} </FadeInAnimation> </i></h3>
-           
-            </div>
-            
-        <div className="containerBio" >
+      <div className="BioContent">
 
-        
         <FadeInAnimation>
-            {
-                <p id="bioTextParagraph"> 
-                      A Problem solver, quick learner, teamwork person and self-motivated software developer with <b> three years of experience </b> working, providing software solutions to clients for Business Process Automation, in addition of building web and mobile applications. A curious learner willing to provide excellent solutions to exceed requirements assigned. Looking to work individually or with a team, collecting applications’ requirements, designing mobile or web, software applications, developing, implementing, and testing applications’ codes.   
-                
-                    <br></br>
-                </p>
-            }
-            </FadeInAnimation>
-        </div>    
-        </div>
-           
-       </> );
-    }
+          <div className="BioLeft">
+            <span className="BioLabel">About me</span>
+            <h2>Full Stack<br />Developer</h2>
+          </div>
+        </FadeInAnimation>
 
- 
+        <FadeInAnimation>
+          <div className="BioRight">
+            <p id="bioTextParagraph">
+              A problem solver, quick learner, and self-motivated software developer with <b>four years of experience</b> delivering software solutions for Business Process Automation. I design and build web and mobile applications — collecting requirements, architecting solutions, writing clean code, and shipping products that exceed expectations.
+            </p>
+
+            <div className="BioStats">
+              {stats.map((s, i) => (
+                <div className="BioStat" key={i}>
+                  <h3>{s.value}</h3>
+                  <p>{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeInAnimation>
+
+      </div>
+    </div>
+  );
+}
+
 export default BioCareerGoals;

@@ -1,12 +1,7 @@
 import React from 'react';
-import NavB from "./components/NavB";
-
-import './App.css'
+import './App.css';
+import NavB from './components/NavB';
 import MainSection from './components/MainSection';
-
-
-import {Link, BrowserRouter, Switch, Router} from 'react-router-dom';
-import logoSW from './components/assets-copy/SteevenWeminLogo.jpg';
 import Experiences from './components/Experiences';
 import Skills from './components/Skills';
 import BioCareerGoals from './components/BioCareerGoals';
@@ -14,34 +9,19 @@ import Project from './components/Projects';
 import Footer from './components/footer';
 import CareerGoalsServices from './components/CareerGoalsServices';
 
-
-class App extends React.Component {
- state = {  }
-
-
-
- 
-  render() { 
-
-    return ( <>
-    
-    
-    
-    <NavB/>
-    <MainSection/>
-     <Experiences/>
-    <Project/>
-    <BioCareerGoals/>
-    
-    <Skills/>
-    <CareerGoalsServices/>
-    <Footer/>
-    
-   
-    </> );
-  }
+function App() {
+  return (
+    <>
+      <NavB />
+      <MainSection />
+      <Experiences />
+      <Project />
+      <BioCareerGoals />
+      <Skills />
+      <CareerGoalsServices />
+      <Footer />
+    </>
+  );
 }
- 
-
 
 export default App;

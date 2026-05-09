@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 
 import FooterSectionMP4 from "./assets-copy/lightning-bulb.mp4";
@@ -10,7 +10,6 @@ import { Toast } from 'primereact/toast';
 function Footer()  {
     const form = useRef();
     const toast = useRef(null);
-    const[styleCSS,setStyleCSS] = useState({})
 
     function sendEmail(e){
     e.preventDefault();
@@ -26,21 +25,15 @@ function Footer()  {
         )
         .then(
             (result) => {
-            //console.log('SUCCESS!', result.text);
             toast.current.show({severity:'success', summary: '', detail:'Your message has been sent', life: 3000});
 
             form.current.reset(); // Optionally reset the form
             },
             (error) => {
-            //console.log('FAILED...', error);
-
             toast.current.show({severity:'error', summary: '', detail:'Failed to send message', life: 3000});
 
             }
         );
-
-    //  this.showSuccess()
-    
     }
     
 
@@ -48,7 +41,7 @@ function Footer()  {
        
         return (     
         <>
-            <Toast ref={toast} id='ToastNotif' style={styleCSS}/>
+            <Toast ref={toast} id='ToastNotif' />
             <div id='ContactFormDiv'>
                 <div id="animationCoverContactForm"> 
                     <video autoPlay loop muted playsInline>
@@ -79,7 +72,7 @@ function Footer()  {
 
   <footer id="Footer1" className="w-full">
             <div className='LogoFooterDiv'>
-                <li> <a href='#'><img id='HomeLogo' src={LogoImg} alt='Home logo' width="150" height="150" /></a></li>
+                <li> <a href='#Footer1'><img id='HomeLogo' src={LogoImg} alt='Home logo' width="150" height="150" /></a></li>
                 
 
             </div>
@@ -104,9 +97,9 @@ function Footer()  {
                 <div className='OtherFooterDiv'>
                 <ul>
                     <h5> Social Network</h5>
-                    <li> <a href='https://www.linkedin.com/in/orell-wemin-8519a5179' target='_blank'><p>LinkedIn</p></a></li>
-                    <li> <a href='https://github.com/SteevenOrell/' target='_blank'><p>Github</p></a></li>
-                    <li> <a href='https://www.freelancer.com/u/JuniOrell' target='_blank'><p>Freelancer</p></a></li>
+                    <li> <a href='https://www.linkedin.com/in/orell-wemin-8519a5179' target='_blank' rel="noreferrer"><p>LinkedIn</p></a></li>
+                    <li> <a href='https://github.com/SteevenOrell/' target='_blank' rel="noreferrer"><p>Github</p></a></li>
+                    <li> <a href='https://www.freelancer.com/u/JuniOrell' target='_blank' rel="noreferrer"><p>Freelancer</p></a></li>
                 </ul>
             </div>
             </div>

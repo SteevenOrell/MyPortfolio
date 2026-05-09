@@ -1,158 +1,150 @@
-import {useState,useEffect} from "react";
-import img1 from "./assets-copy/skillslogo/JSLogo.png";
-import img2 from "./assets-copy/skillslogo/React.png";
-import img3 from "./assets-copy/skillslogo/nodejs.png";
-import img4 from "./assets-copy/skillslogo/python.png";
-import img5 from "./assets-copy/skillslogo/java.png";
-import img6 from "./assets-copy/skillslogo/csharp.png";
-import img7 from "./assets-copy/skillslogo/php.png";
-import { PlayPause } from "./Icons/PlayPause";
-import { PauseIcon } from "./Icons/Pause";
+import { useState } from "react";
 import { FadeInAnimation } from "./FadeInAnimation";
-
 import { PreviousArrow2 } from "./Icons/PreviousArrow2";
 import { NextArrow2 } from "./Icons/NextArrow2";
 
-import ScrollVelocity from "./ScrollVelocity";
+const skills = [
+  {
+    title: "Full Stack JavaScript",
+    label: "Web Development",
+    content: (
+      <ul>
+        <li><b>Frontend:</b> React.js, Angular, HTML5, CSS3, Tailwind CSS</li>
+        <li><b>Backend:</b> Node.js, Express.js</li>
+        <li><b>Database:</b> MongoDB, PostgreSQL, MySQL, Firebase</li>
+        <li><b>Stacks:</b> MERN, MEAN</li>
+        <li><b>Auth:</b> JWT, OAuth 2.0, Session-based Auth</li>
+        <li><b>Tools:</b> REST APIs, Socket.io</li>
+      </ul>
+    ),
+  },
+  {
+    title: "Mobile & Web — React Native",
+    label: "Cross-Platform",
+    content: (
+      <ul>
+        <li><b>Mobile:</b> React Native Expo (iOS & Android)</li>
+        <li><b>Web:</b> React.js single-page &amp; multi-page applications</li>
+        <li><b>Backend:</b> Firebase (Auth, Firestore, Storage), OAuth 2.0</li>
+        <li><b>State:</b> Context API</li>
+        <li><b>UI Kits:</b> PrimeReact, Tailwind</li>
+      </ul>
+    ),
+  },
+  {
+    title: "Python",
+    label: "Programming & AI",
+    content: (
+      <ul>
+        <li><b>Web:</b> Django, Flask, REST APIs</li>
+        <li><b>AI / ML:</b> scikit-learn, TensorFlow basics, pandas, NumPy</li>
+        <li><b>Scripting:</b> Automation, data processing pipelines</li>
+        <li><b>Database:</b> SQLite, PostgreSQL</li>
+      </ul>
+    ),
+  },
+  {
+    title: "C# — Web Application",
+    label: "Enterprise Dev",
+    content: (
+      <ul>
+        <li><b>Framework:</b> ASP.NET Core, MVC, Web API</li>
+        <li><b>Cloud:</b> Azure AI services, Azure DevOps</li>
+        <li><b>Database:</b> PostgreSQL, SQL Server</li>
+        <li><b>Concepts:</b> OOP, SOLID</li>
+        <li><b>Tools:</b> Visual Studio, NuGet, IIS</li>
+      </ul>
+    ),
+  },
+  {
+    title: "DevOps & Agile",
+    label: "Methodology",
+    content: (
+      <ul>
+        <li><b>Version Control:</b> Git, GitHub, GitLab</li>
+        <li><b>CI/CD:</b> Azure Pipelines, GitHub Actions</li>
+        <li><b>Cloud:</b> Azure (App Service, Functions, Storage)</li>
+        <li><b>Containers:</b> Docker basics</li>
+        <li><b>Agile:</b> Scrum, Azure DevOps Boards, Sprint Planning, Code Review</li>
+      </ul>
+    ),
+  },
+];
 
+function Skills() {
+  const [current, setCurrent] = useState(0);
+  const [animClass, setAnimClass] = useState('');
 
-function Skills(){
+  function navigate(dir) {
+    const next = current + (dir === 'next' ? 1 : -1);
+    if (next < 0 || next >= skills.length || animClass) return;
+    setAnimClass(`skillcard-exit-${dir}`);
+    setTimeout(() => {
+      setCurrent(next);
+      setAnimClass(`skillcard-enter-${dir}`);
+      setTimeout(() => setAnimClass(''), 400);
+    }, 280);
+  }
 
-    const cardsMainSkills = [{
-        title:"MERN & MEAN Stack",
-        content:<p>I am highly proficient in full-stack web development, with expertise across both the <b>MERN (MongoDB, Express.js, React, Node.js)</b> and <b>MEAN (MongoDB, Express.js, Angular, Node.js)</b> stacks. </p>
-        },
-        {
-        title:"OOP Languages",
-        content:<p>Beyond web and mobile, I possess strong general-purpose programming skills in <b>C#</b> and <b>Python</b>, underpinned by a solid understanding of Object-Oriented Programming (OOP) principles. I also delve into advanced fields like Artificial Intelligence (AI), specifically Machine Learning. </p>
-        },
-        {
-            title:"Mobile Development",
-            content:<p> I'm a skilled mobile developer, proficient in building both native applications for Android using <b>Java</b> and for iOS with <b>Swift</b>. I also utilize <b>React Native Expo</b> for efficient cross-platform development.</p>
-        },
-       {
-        title:"Agile/Scrum & Devops",
-        content:<p>Rounding out my profile, my familiarity with Agile Methodology ensures efficient project management, and my knowledge of DevOps practices highlights my ability to contribute across the entire software development lifecycle.</p>
-        },
-    ]
-    const cardsContents = [img1,img2,img3,img4,img5,img6,img7];
-    const [width,setWidth] = useState(window.screen.width);
-      
-    const items =cardsContents.map((img,index)=>{
-                    return(<div className={"CardClass1"}  style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover'}} ></div>)
-                })   
-    const [isPlay,setPlay] = useState(true);
-    const [currentTranslate,setTranslate] = useState(0);
-                              
-  
+  const skill = skills[current];
 
-      useEffect(()=>{
-
-        function handleResize() {
-          setWidth(window.screen.width);
-        //   setHeight(window.innerHeight);
-        }
-        window.addEventListener("resize", handleResize)
-        handleResize();
-
-        return () => { 
-          window.removeEventListener("resize", handleResize)
-        }
-
-
-
-      },[width])
-    function moveToNext(){
-        if(currentTranslate > -150 && width>850){
-            setTranslate((currentTranslate)=>{ return currentTranslate-40;})
-        }
-        else if(currentTranslate > -240 && width>=570 && width<=850){
-            // console.log("width "+ width)
-            setTranslate((currentTranslate)=>{ return currentTranslate-40;})
-        }
-        else{
-            if(currentTranslate > -120){
-                // console.log("width > 350"+ width)
-                setTranslate((currentTranslate)=>{ return currentTranslate-40;})
-            }
-            
-        }
-        
-    }
-    function moveToPrev(){
-        if(currentTranslate < 0 && width>850){
-            setTranslate((currentTranslate)=>{ return currentTranslate+40;})
-        }
-        else if(width<=850 && width>=570 && currentTranslate < 0 ){
-            setTranslate((currentTranslate)=>{ return currentTranslate+40;})
-        }
-        else{
-            if(currentTranslate < 0){
-                
-                setTranslate((currentTranslate)=>{ return currentTranslate+40;})
-            }
-            
-        }
-    }  
-
-    return (
-      <>
-
-              <div id="CarouselSection1">
-
-            <div id="CarouselDiv1"  >
-
-
-            <ScrollVelocity baseVelocity={-5} isPaused={!isPlay}>
-          
-                {items}
-            </ScrollVelocity>
-            </div>
-            <div id="PlayStopCarousel" 
-                onClick={()=>{   
-                        if(!isPlay){ 
-                            setPlay(true);
-                        }else{
-
-                            setPlay(false)
-                            
-                        }
-                    }
-                }
-            > <button >{isPlay ? <PauseIcon/>: <PlayPause/>}</button> </div>
+  return (
+    <div id="SkillsSection1">
+      <FadeInAnimation>
+        <div className="SkillsSectionTitle">
+          <h3><i>Skills</i></h3>
         </div>
-    
 
-      
-     <div className='titleInTheMiddle' id="SkillsSection1"> <FadeInAnimation><h3 ><i> Skills </i></h3></FadeInAnimation></div>
- <div className="CarouselSection2">
+        <div className="SkillCarousel">
+          <button
+            className="SkillCarousel__arrow"
+            onClick={() => navigate('prev')}
+            disabled={current === 0}
+          >
+            <PreviousArrow2 />
+          </button>
 
-            <div id="CarouselDiv2"   style={{ transform:`translateX(${currentTranslate}vh)` }} >
-
-                            {   
-                                cardsMainSkills.map((obj,index)=>{
-
-                                    
-                                    return(
-                                    <div className="CardClass2" key={`Otherskill_${index}`} >
-                                        <h4>{obj.title}</h4>
-                                        {obj.content}
-                                    </div>)
-                                })
-                            }
-                        </div>
-                        <div className="PrevNextBtn2" > 
-                            <button id="prevArrowBtn2" onClick={moveToPrev}><PreviousArrow2/></button> 
-                            <button id="nextArrowBtn2" onClick={moveToNext}><NextArrow2/></button> 
-                        </div>
+          <div className="SkillCarousel__track">
+            <div className={`SkillCarousel__card ${animClass}`}>
+              <span className="SkillCarousel__label">{skill.label}</span>
+              <h4>{skill.title}</h4>
+              <div className="SkillCarousel__rule" />
+              <div className="SkillCarousel__body">{skill.content}</div>
+              <span className="SkillCarousel__counter">{current + 1} / {skills.length}</span>
             </div>
+          </div>
 
- 
+          <button
+            className="SkillCarousel__arrow"
+            onClick={() => navigate('next')}
+            disabled={current === skills.length - 1}
+          >
+            <NextArrow2 />
+          </button>
+        </div>
 
-
-       </>   
-        )
-
+        <div className="SkillCarousel__dots">
+          {skills.map((_, i) => (
+            <span
+              key={i}
+              className={`SkillCarousel__dot${i === current ? ' SkillCarousel__dot--on' : ''}`}
+              onClick={() => {
+                if (i !== current && !animClass) {
+                  const dir = i > current ? 'next' : 'prev';
+                  setAnimClass(`skillcard-exit-${dir}`);
+                  setTimeout(() => {
+                    setCurrent(i);
+                    setAnimClass(`skillcard-enter-${dir}`);
+                    setTimeout(() => setAnimClass(''), 400);
+                  }, 280);
+                }
+              }}
+            />
+          ))}
+        </div>
+      </FadeInAnimation>
+    </div>
+  );
 }
 
 export default Skills;

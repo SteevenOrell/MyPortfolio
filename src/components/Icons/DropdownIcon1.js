@@ -1,7 +1,11 @@
 import React from "react";
-import { useState } from "react";
 
-export const DropdownIcon1 = (props)=><svg fill="#ffffff" width="20px" height="20px" viewBox="-6.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>dropdown</title> <path d="M18.813 11.406l-7.906 9.906c-0.75 0.906-1.906 0.906-2.625 0l-7.906-9.906c-0.75-0.938-0.375-1.656 0.781-1.656h16.875c1.188 0 1.531 0.719 0.781 1.656z"></path> </g></svg>
+export const DropdownIcon1 = (props) => (
+  <svg width="18px" height="14px" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" style={{marginRight:"6px", verticalAlign:"middle", display:"inline-block"}}>
+    <line x1="0" y1="4" x2="24" y2="4" />
+    <line x1="0" y1="12" x2="24" y2="12" />
+  </svg>
+);
 
 
 
