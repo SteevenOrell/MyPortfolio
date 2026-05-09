@@ -3195,10 +3195,10 @@ video#videoCard_1 {
     height: 100%;
   }
   .careerGoalParagraph {
-    top: 80px;
+    top: 156px;
     height: auto;
     width: 90%;
-    padding-left: 18px;
+    padding-left: 32px;
     padding-right: 18px;
   }
   .careerGoalParagraph h2 {
@@ -3237,9 +3237,11 @@ video#videoCard_1 {
 }
 
 @media (max-width:400px) {
+
   .careerGoalImgTitle h1{
     /* font-size: 55px; */
     right: 30px;
+    mix-blend-mode: initial;
   }
 }
 @media (max-width:385px) {
