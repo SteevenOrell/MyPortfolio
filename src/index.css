@@ -1357,7 +1357,7 @@ span#helloSpan {
     position: fixed;
     right: 5%;
     width: 69%;
-    top: 64%;
+    top: 72%;
     bottom: unset;
     left: unset;
     transform: none;
@@ -2227,7 +2227,7 @@ span#helloSpan {
   will-change: transform;
   position: relative;
   overflow: hidden;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 }
 
 .CardExperience::before {
