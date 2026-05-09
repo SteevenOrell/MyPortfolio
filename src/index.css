@@ -3092,7 +3092,7 @@ video#videoCard_1 {
   z-index: 1;
   bottom: 14px;
   line-height: 0.9;
-  color: #ffffff;
+  color: #ff4937;
   letter-spacing: -2.5px;
   
 }
@@ -3109,7 +3109,7 @@ video#videoCard_1 {
     mix-blend-mode: difference;
 }
 .Carousel2-Number h3{
-  color: #ffffff;
+  color: #ff4937;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .careerGoalImgTitle.open{
