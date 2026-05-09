@@ -1299,13 +1299,7 @@ span#helloSpan {
   }
 
   .Carousel1-content--alt {
-    left: unset;
-    transform: none;
-    top: unset;
-    bottom: 8%;
-    right: 2%;
-    width: auto;
-    text-align: right;
+    display: none;
   }
   /* .Carousel1-content h3{
     font-size: 4vh;
@@ -1346,23 +1340,14 @@ span#helloSpan {
     font-size: 17px;
   }
   .Carousel1-content {
-    left: 3%;
-    transform: none;
-    text-align: left;
-    width: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
     top: 11%;
   }
   .Carousel1-content--alt {
-    display: block;
-    position: fixed;
-    right: 5%;
-    width: 69%;
-    top: 72%;
-    bottom: unset;
-    left: unset;
-    transform: none;
-    text-align: right;
-    z-index: 12;
+    display: none;
   }
 }
 @media(max-width:468px){
@@ -1411,9 +1396,7 @@ span#helloSpan {
   }
   #helloSpan { font-size: 46px; }
   .Carousel1-content--alt {
-    display: block;
-    right: 6%;
-    top: 37%;
+    display: none;
   }
 }
 
