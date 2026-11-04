@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 
 import FooterSectionMP4 from "./assets-copy/lightning-bulb.mp4";
@@ -10,30 +10,45 @@ import { Toast } from 'primereact/toast';
 function Footer()  {
     const form = useRef();
     const toast = useRef(null);
+    const [sending, setSending] = useState(false);
 
     function sendEmail(e){
-    e.preventDefault();
-        
+        e.preventDefault();
+        if (sending) return;
+
+        // Honeypot: real visitors never see or fill this field, bots usually do.
+        if (form.current.elements.website.value) {
+            form.current.reset();
+            return;
+        }
+
+        setSending(true);
         emailjs
         .sendForm(
-            process.env.REACT_APP_EMAILJS_SERVICE_ID,
-            process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+            import.meta.env.REACT_APP_EMAILJS_SERVICE_ID,
+            import.meta.env.REACT_APP_EMAILJS_TEMPLATE_ID,
             form.current,
             {
-            publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+            publicKey: import.meta.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+            // Refuse to send from headless browsers (automated bots).
+            blockHeadless: true,
+            // Allow at most one message every 30 seconds from the same browser.
+            limitRate: { id: 'contact-form', throttle: 30000 },
             }
         )
         .then(
-            (result) => {
+            () => {
             toast.current.show({severity:'success', summary: '', detail:'Your message has been sent', life: 3000});
-
-            form.current.reset(); // Optionally reset the form
+            form.current.reset();
             },
             (error) => {
-            toast.current.show({severity:'error', summary: '', detail:'Failed to send message', life: 3000});
-
+            const detail = error && error.status === 429
+                ? 'Please wait a moment before sending another message'
+                : 'Failed to send message';
+            toast.current.show({severity:'error', summary: '', detail, life: 3000});
             }
-        );
+        )
+        .finally(() => setSending(false));
     }
     
 
@@ -53,17 +68,21 @@ function Footer()  {
                     <h3><i>CONTACT ME</i></h3>
                     <div>
                         <label className='labelContactForm'> Name</label><br/>
-                        <input type='name' placeholder='Your name' name="name" required/> <br/>
+                        <input type='text' placeholder='Your name' name="name" required maxLength={100} autoComplete='name'/> <br/>
                     </div>
                     <div>
                         <label className='labelContactForm'> Email</label><br/>
-                        <input type='email' placeholder='Let connect via email' name='email'  required/> <br/>
+                        <input type='email' placeholder='Let connect via email' name='email' required maxLength={254} autoComplete='email'/> <br/>
                     </div>
                     <div>
                         <label className='labelContactForm'> Your Message</label><br/>
-                        <textarea placeholder='Message me' rows="7" cols="100" name='message' required id='message'/> <br/>
+                        <textarea placeholder='Message me' rows="7" cols="100" name='message' required minLength={10} maxLength={5000} id='message'/> <br/>
                     </div>
-                    <button>Submit</button>
+                    {/* Honeypot field, hidden from people and screen readers */}
+                    <div aria-hidden="true" style={{position:'absolute', left:'-10000px', width:'1px', height:'1px', overflow:'hidden'}}>
+                        <label>Website<input type='text' name='website' tabIndex={-1} autoComplete='off' defaultValue=''/></label>
+                    </div>
+                    <button type='submit' disabled={sending}>{sending ? 'Sending...' : 'Submit'}</button>
                 </form>
                
             </div>
