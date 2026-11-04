@@ -6,12 +6,15 @@ import { useEffect, useState } from 'react';
 const LAYERS = [0.5, 0.5625, 1.125, 2.25, 4.5, 9, 18, 36];
 
 function BottomBlur() {
-  // Fade it out at the very end of the page so the copyright line stays readable.
-  const [atEnd, setAtEnd] = useState(false);
+  // Hidden at the very top (keeps the hero status line sharp) and at the very end of the page
+  // (keeps the copyright line readable).
+  const [hidden, setHidden] = useState(true);
   useEffect(() => {
     const onScroll = () => {
       const doc = document.documentElement;
-      setAtEnd(window.scrollY + window.innerHeight >= doc.scrollHeight - 140);
+      const atTop = window.scrollY < 80;
+      const atEnd = window.scrollY + window.innerHeight >= doc.scrollHeight - 140;
+      setHidden(atTop || atEnd);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -23,7 +26,7 @@ function BottomBlur() {
   }, []);
 
   return (
-    <div className={`sw-bblur${atEnd ? ' is-hidden' : ''}`} aria-hidden="true">
+    <div className={`sw-bblur${hidden ? ' is-hidden' : ''}`} aria-hidden="true">
       {LAYERS.map((blur, i) => {
         const a = i * 12.5;
         // Each layer fades in, holds, then fades out over the next band; the last ones run to the bottom.

@@ -1246,6 +1246,63 @@ a.sw-btn--pill:hover { color: #fff; }
 .sw-bblur.is-hidden { opacity: 0; }
 @media (max-width: 640px) { .sw-bblur { height: 90px; } }
 
+/* ---------- Loading screen (opening cover) ---------- */
+
+/* Transparent layer over the page: the page behind is blurred (backdrop) while the orange logo
+   and the loading bar stay sharp on top. */
+/* Covers the whole screen on phones too: the large-viewport height (lvh) includes the area behind
+   the browser toolbars, and the layer overshoots each edge a little so no strip is ever left uncovered. */
+.sw-loader-root {
+  position: fixed;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh + 80px);
+  height: calc(100lvh + 80px);
+  z-index: 1000;
+  pointer-events: none;
+}
+.sw-loader__backdrop { position: absolute; inset: 0; }
+/* The two halves: each covers its side, feathered on the inner (centre) edge, and slides outwards. */
+.sw-loader__half { position: absolute; top: 0; bottom: 0; width: 50%; animation: 1.1s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
+.sw-loader__half--left {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 70%, transparent 100%);
+  animation-name: sw-blur-open-left;
+}
+.sw-loader__half--right {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, #000 70%, transparent 100%);
+  animation-name: sw-blur-open-right;
+}
+@keyframes sw-blur-open-left { to { transform: translateX(-102%); } }
+@keyframes sw-blur-open-right { to { transform: translateX(102%); } }
+.sw-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.4vw, 16px);
+}
+/* Logo and bar fade out quickly while the blur opens. */
+.sw-loader { transition: opacity 0.5s var(--sw-ease), transform 0.5s var(--sw-ease); }
+.sw-loader-root.is-fading .sw-loader { opacity: 0; transform: scale(0.96); }
+/* The logo image has empty margins around the SW, so the bar is pulled up under the letters. */
+.sw-loader__logo { width: clamp(220px, 24vw, 340px); height: auto; max-width: none; margin-bottom: clamp(-46px, -4vw, -30px); }
+.sw-loader__bar {
+  width: clamp(110px, 10vw, 150px);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+.sw-loader__bar span { display: block; height: 100%; border-radius: inherit; background: var(--sw-accent); transform-origin: left; }
+@media (prefers-reduced-motion: reduce) { .sw-loader-root { display: none; } }
+
 /* ---------- Very small screens (< 250px) ----------
    Same rule as the original site and the footer: below 250px the layout is locked at 500px
    so text and blocks keep their proportions instead of collapsing; visitors pan or zoom out. */

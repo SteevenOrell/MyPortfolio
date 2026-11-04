@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import heroBg from './assets-copy/ElevenLabs_video_seedance-2-0_the wind sho..._2026-05-08T15_08_32.mp4';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useSiteReady } from '../loading';
 
 const ease = [0.22, 1, 0.36, 1];
 const PHONE = '(max-width: 640px)';
@@ -22,6 +23,8 @@ function MainSection() {
   const ref = useRef(null);
   const reduce = useReducedMotion();
   const small = useIsPhone();
+  // The entrance plays when the loading screen lifts.
+  const ready = useSiteReady();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
 
   // Parallax: the video sinks and zooms, the text rises faster and fades out.
@@ -33,8 +36,8 @@ function MainSection() {
 
   const intro = (delay) => reduce ? {} : {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 1, delay, ease },
+    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
+    transition: { duration: 1, delay: delay + 0.15, ease },
   };
 
   return (

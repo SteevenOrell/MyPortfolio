@@ -12,6 +12,7 @@ import Skills from './components/Skills';
 import CareerGoalsServices from './components/CareerGoalsServices';
 import Footer from './components/footer';
 import BottomBlur from './components/BottomBlur';
+import Loader from './components/Loader';
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
 import { RouterProvider, useRouter } from './router';
 
@@ -48,6 +49,7 @@ function Page() {
       </main>
       <Footer />
       <BottomBlur />
+      <Loader />
     </>
   );
 }
