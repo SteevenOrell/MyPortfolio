@@ -1,179 +1,118 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { createRef, useMemo, useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
-import ecomWebsite from './assets-copy/EcomWebsite.png';
-import ecomWebsite2 from './assets-copy/EcomWebsite2.png';
-import ecomWebsite3 from './assets-copy/EcomWebsite3.png';
-import ecomWebsite4 from './assets-copy/EcomWebsite4.png';
-import wcc1Img from './assets-copy/WccImg1.png';
-import wccImg2 from './assets-copy/WccImg2.png';
-import wccImg3 from './assets-copy/WccImg3.png';
-import wccImg4 from './assets-copy/WccImg4.png';
-import chatAppImg from './assets-copy/Capture-ChatApp.JPG';
-import capstoneImg from './assets-copy/CapstoneImages.jpg';
+import { useLanguage } from '../i18n/LanguageContext';
+import { withText } from '../data/projects';
+import { PHONE_QUERY, useMediaQuery } from '../hooks';
+import { Link } from '../router';
+import { ArrowRight, ArrowUpRight } from './icons';
+import { Reveal } from './motion';
+import SectionHeader from './SectionHeader';
+import ProjectSheet from './ProjectSheet';
 
-import projectVid1 from './assets-copy/EcomWebAppTest.mp4';
-import projectVid2 from './assets-copy/WayandaWebTest.mp4'
-import projectBgAlt from './assets-copy/ChatGPT Image May 8, 2026, 04_43_07 PM.png';
-import projectMobileVid1 from './assets-copy/Oct-15-2025-1760559225_1722441.mov';
-import projectMobileVid2 from './assets-copy/Oct-15-2025-1760559357_7705660.mov';
-import { Sidebar } from 'primereact/sidebar';
+const pad = n => String(n).padStart(2, '0');
 
-gsap.registerPlugin(ScrollTrigger);
+// The card's picture: the project video, or its cover image.
+// Phones get the portrait recording only for "tall" projects (their frame is shaped for it).
+export function ProjectCover({ project, phone }) {
+  if (project.cover === 'video') {
+    return <video autoPlay loop muted playsInline preload="metadata" poster={project.images[0]} src={phone && project.tall ? project.mobileVideo : project.video} />;
+  }
+  return <img src={project.cover} alt="" loading="lazy" />;
+}
 
-const Project = () => {
-  const [widthScreen, setWidth] = useState(window.screen.width);
-  const [visible, setVisible] = useState(false);
-  const [currentProject, setCurrentProjectDisplay] = useState(0);
-  const wrapperRef = useRef(null);
-  const cardsRef = useRef([]);
-  const offsetRef = useRef(null);
-
-  const projectsData = [
-    {
-      title: 'Wayanda Website',
-      description: 'This website connects skilled, compassionate barbers to nursing homes across Ontario to offer in-home haircuts to elderly residents. Built with React, Tailwind.css, Email.js, Prime React.',
-      link: 'https://github.com/SteevenOrell/WayandaCC',
-      imgArray: [wcc1Img, wccImg2, wccImg3, wccImg4],
-      videoProject: widthScreen >= 550 ? projectVid2 : projectMobileVid2,
-    },
-    {
-      title: 'Ecommerce App',
-      description: 'A CRUD ECOM APP... Features includes view products list (With pagination), search product, view product details, sign in to account, edit Profile account etc...',
-      link: 'https://github.com/SteevenOrell/PracticeEcommerceWebsite',
-      imgArray: [ecomWebsite, ecomWebsite2, ecomWebsite3, ecomWebsite4],
-      videoProject: widthScreen >= 550 ? projectVid1 : projectMobileVid1,
-    },
-    {
-      title: 'Chat Application',
-      description: 'A realtime chat application allowing persons to chat. Not designed for mobile. Technologies used : Socket.io, Express, Node.js, MongoDB, Html5, Jquery',
-      link: 'https://github.com/SteevenOrell/chat-app-assignment',
-      imgArray: [chatAppImg],
-      bgImage: projectBgAlt,
-    },
-    {
-      title: 'Pocket Meal App',
-      description: "A mobile application allowing user to communicate with persons who need healthy food instead of wasting it. Food list are dynamically shown by person near user's location.",
-      link: 'https://github.com/SteevenOrell/CapstoneProject-PocketMealSystem',
-      imgArray: [capstoneImg],
-      bgImage: projectBgAlt,
-    },
-  ];
-
-  useEffect(() => {
-    function handleResize() {
-      setWidth(window.screen.width);
-    }
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const cards = cardsRef.current.filter(Boolean);
-    const stickySpace = offsetRef.current;
-    if (!cards.length || !stickySpace) return;
-
-    const animation = gsap.timeline();
-
-    function initCards() {
-      animation.clear();
-      const cardHeight = cards[0].offsetHeight;
-      cards.forEach((card, index) => {
-        if (index > 0) {
-          gsap.set(card, { y: index * cardHeight });
-          animation.to(card, { y: 0, duration: index * 0.5, ease: 'none' }, 0);
-        }
-      });
-    }
-
-    initCards();
-
-    const trigger = ScrollTrigger.create({
-      trigger: wrapperRef.current,
-      start: 'top top',
-      pin: true,
-      end: () => `+=${cards.length * cards[0].offsetHeight + stickySpace.offsetHeight}`,
-      scrub: true,
-      animation,
-      invalidateOnRefresh: true,
-    });
-
-    ScrollTrigger.addEventListener('refreshInit', initCards);
-
-    return () => {
-      trigger.kill();
-      ScrollTrigger.removeEventListener('refreshInit', initCards);
-    };
-  }, []);
+// One stacking card. On desktop it sticks under the nav; while the next card slides over it,
+// it shrinks a little and darkens (scale 1 → 0.93, dim 0 → 0.55).
+function StackCard({ project, index, total, nextRef, cardRef, stacking, phone, onOpen }) {
+  const { t } = useLanguage();
+  const w = t.work;
+  const own = useRef(null);
+  const { scrollYProgress } = useScroll({ target: nextRef ?? own, offset: ['start end', 'start 112px'] });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
+  const dim = useTransform(scrollYProgress, [0, 1], [0, 0.55]);
+  const animated = stacking && nextRef;
+  const portrait = project.tall && phone;
 
   return (
-    <>
-      <Sidebar visible={visible} onHide={() => setVisible(false)} className='Sidebar' fullScreen>
-        <h4>{projectsData[currentProject].title}</h4>
-        <p>{projectsData[currentProject].description}</p>
-        <a href={projectsData[currentProject].link} target='_blank' rel="noreferrer">Github link</a>
-        <div className="swiper mySwiper mb-10 py-10">
-          <div className="swiper-wrapper">
-            {projectsData[currentProject].imgArray.map((img, index) => (
-              <div className="swiper-slide" key={`swiper_${index}`}>
-                <div className="w-full-h-full-img">
-                  <img
-                    src={img}
-                    alt=''
-                    className="w-full h-full object-cover mx-auto"
-                  />
-                </div>
-              </div>
-            ))}
+    <article ref={cardRef} className={`sw-wk${portrait ? ' sw-wk--portrait' : ''}`}>
+      <motion.div className="sw-wk__in" style={animated ? { scale } : undefined}>
+        <div className="sw-wk__tx">
+          <p className="sw-wk__top">
+            <span>{pad(index + 1)} / {pad(total)}</span>
+            <span>{project.category}</span>
+          </p>
+          <div>
+            <h3 className="sw-wk__title">
+              <span className="sw-ppc__title-full">{project.title}</span>
+              <span className="sw-ppc__title-short">{project.shortTitle || project.title}</span>
+            </h3>
+            <p className="sw-wk__desc">{project.description}</p>
+            <ul className="sw-wk__tags">{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
+          </div>
+          <div className="sw-wk__bot">
+            <a className="sw-link" href={project.link} target="_blank" rel="noreferrer">{w.github} <ArrowUpRight /></a>
+            <button type="button" className="sw-pillbtn" onClick={onOpen}>
+              <span>{w.details}</span>
+              <span className="sw-pillbtn__ic"><ArrowRight className="" /></span>
+            </button>
           </div>
         </div>
-      </Sidebar>
+        <button type="button" className={`sw-wk__media${project.fit === 'contain' ? ' sw-wk__media--contain' : ''}`} onClick={onOpen} tabIndex={-1} aria-hidden="true">
+          <ProjectCover project={project} phone={phone} />
+        </button>
+        {animated && <motion.span className="sw-wk__dim" aria-hidden="true" style={{ opacity: dim }} />}
+      </motion.div>
+    </article>
+  );
+}
 
-      <div id="ProjectDiv">
-        <div className='titleInTheMiddle' id='titleOnSide'>
-          <h3>Latest Projects</h3>
+// Home page: the featured projects as stacking cards, then a link to the full list.
+const Project = () => {
+  const { t } = useLanguage();
+  const w = t.work;
+  const reduce = useReducedMotion();
+  const phone = useMediaQuery(PHONE_QUERY);
+  const stacking = useMediaQuery('(min-width: 1001px)') && !reduce;
+  const [open, setOpen] = useState(null);
+
+  const featured = withText(w.items).filter(p => p.featured);
+  const allCount = withText(w.items).length;
+  const refs = useMemo(() => featured.map(() => createRef()), [featured.length]);
+
+  return (
+    <section id="work" className="sw-section sw-work">
+      <div className="sw-container">
+        <SectionHeader index={w.index} label={w.label} title={w.title} count={featured.length} />
+
+        <div className="sw-wks">
+          {featured.map((p, i) => (
+            <StackCard
+              key={p.id}
+              project={p}
+              index={i}
+              total={featured.length}
+              cardRef={refs[i]}
+              nextRef={refs[i + 1]}
+              stacking={stacking}
+              phone={phone}
+              onOpen={() => setOpen(i)}
+            />
+          ))}
         </div>
 
-        <div className="stack-wrapper" ref={wrapperRef}>
-          <div className="stack-offset" ref={offsetRef}></div>
-          <div className="portfolio-stack">
-            {projectsData.map((project, index) => (
-              <div
-                className="stack-item"
-                key={`stack_${index}`}
-                style={{ zIndex: index + 1 }}
-                ref={el => (cardsRef.current[index] = el)}
-              >
-                <div
-                  className="portfolio-stack__inner"
-                  onClick={() => { setVisible(true); setCurrentProjectDisplay(index); }}
-                >
-                  {project.bgImage
-                    ? <img src={project.bgImage} alt="" className="stack-card-video" />
-                    : <video autoPlay loop muted playsInline className="stack-card-video">
-                        <source src={project.videoProject} type="video/mp4" />
-                      </video>
-                  }
-                  <div className="stack-card-gradient"></div>
-                  <div className="portfolio-stack__descr">
-                    <span className="portfolio-stack__number">{String(index + 1).padStart(2, '0')}</span>
-                    <h4 className="portfolio-stack__title">{project.title}</h4>
-                    <p className="portfolio-stack__text">{project.description}</p>
-                    <button
-                      className="portfolio-stack__btn"
-                      onClick={e => { e.stopPropagation(); setVisible(true); setCurrentProjectDisplay(index); }}
-                    >
-                      VIEW
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Reveal className="sw-work__more">
+          <Link to="/projects" className="sw-btn sw-btn--primary">
+            {w.viewAll} <span className="sw-work__more-count">{pad(allCount)}</span> <ArrowRight />
+          </Link>
+        </Reveal>
       </div>
-    </>
+
+      <ProjectSheet
+        project={open !== null ? featured[open] : null}
+        number={open !== null ? pad(open + 1) : ''}
+        onClose={() => setOpen(null)}
+      />
+    </section>
   );
 };
 

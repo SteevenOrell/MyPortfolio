@@ -1,149 +1,98 @@
-import { useState } from "react";
-import { FadeInAnimation } from "./FadeInAnimation";
-import { PreviousArrow2 } from "./Icons/PreviousArrow2";
-import { NextArrow2 } from "./Icons/NextArrow2";
+import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { Reveal } from './motion';
+import SectionHeader from './SectionHeader';
+import Marquee from './Marquee';
 
-const skills = [
-  {
-    title: "Full Stack JavaScript",
-    label: "Web Development",
-    content: (
-      <ul>
-        <li><b>Frontend:</b> React.js, Angular, HTML5, CSS3, Tailwind CSS</li>
-        <li><b>Backend:</b> Node.js, Express.js</li>
-        <li><b>Database:</b> MongoDB, PostgreSQL, MySQL, Firebase</li>
-        <li><b>Stacks:</b> MERN, MEAN</li>
-        <li><b>Auth:</b> JWT, OAuth 2.0, Session-based Auth</li>
-        <li><b>Tools:</b> REST APIs, Socket.io</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Mobile & Web — React Native",
-    label: "Cross-Platform",
-    content: (
-      <ul>
-        <li><b>Mobile:</b> React Native Expo (iOS & Android)</li>
-        <li><b>Web:</b> React.js single-page &amp; multi-page applications</li>
-        <li><b>Backend:</b> Firebase (Auth, Firestore, Storage), OAuth 2.0</li>
-        <li><b>State:</b> Context API</li>
-        <li><b>UI Kits:</b> PrimeReact, Tailwind</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Python",
-    label: "Programming & AI",
-    content: (
-      <ul>
-        <li><b>Web:</b> Django, Flask, REST APIs</li>
-        <li><b>AI / ML:</b> scikit-learn, TensorFlow basics, pandas, NumPy</li>
-        <li><b>Scripting:</b> Automation, data processing pipelines</li>
-        <li><b>Database:</b> SQLite, PostgreSQL</li>
-      </ul>
-    ),
-  },
-  {
-    title: "C# — Web Application",
-    label: "Enterprise Dev",
-    content: (
-      <ul>
-        <li><b>Framework:</b> ASP.NET Core, MVC, Web API</li>
-        <li><b>Cloud:</b> Azure AI services, Azure DevOps</li>
-        <li><b>Database:</b> PostgreSQL, SQL Server</li>
-        <li><b>Concepts:</b> OOP, SOLID</li>
-        <li><b>Tools:</b> Visual Studio, NuGet, IIS</li>
-      </ul>
-    ),
-  },
-  {
-    title: "DevOps & Agile",
-    label: "Methodology",
-    content: (
-      <ul>
-        <li><b>Version Control:</b> Git, GitHub, GitLab</li>
-        <li><b>CI/CD:</b> Azure Pipelines, GitHub Actions</li>
-        <li><b>Cloud:</b> Azure (App Service, Functions, Storage)</li>
-        <li><b>Containers:</b> Docker basics</li>
-        <li><b>Agile:</b> Scrum, Azure DevOps Boards, Sprint Planning, Code Review</li>
-      </ul>
-    ),
-  },
-];
-
+// On mobile the grid becomes a swipeable carousel (CSS scroll-snap); these controls drive it.
 function Skills() {
-  const [current, setCurrent] = useState(0);
-  const [animClass, setAnimClass] = useState('');
+  const { t } = useLanguage();
+  const s = t.skills;
+  const trackRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const slideCount = s.items.length + 1; // the skill cards plus the "Let's talk" card
 
-  function navigate(dir) {
-    const next = current + (dir === 'next' ? 1 : -1);
-    if (next < 0 || next >= skills.length || animClass) return;
-    setAnimClass(`skillcard-exit-${dir}`);
-    setTimeout(() => {
-      setCurrent(next);
-      setAnimClass(`skillcard-enter-${dir}`);
-      setTimeout(() => setAnimClass(''), 400);
-    }, 280);
+  // Keep the counter/dots in sync with swiping.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const onScroll = () => {
+      const slide = track.children[0];
+      if (!slide) return;
+      const step = slide.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
+      setActive(Math.min(slideCount - 1, Math.max(0, Math.round(track.scrollLeft / step))));
+    };
+    track.addEventListener('scroll', onScroll, { passive: true });
+    return () => track.removeEventListener('scroll', onScroll);
+  }, [slideCount]);
+
+  function goTo(index) {
+    const track = trackRef.current;
+    const slide = track?.children[index];
+    if (!slide) return;
+    track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: 'smooth' });
   }
 
-  const skill = skills[current];
+  const num = n => String(n).padStart(2, '0');
 
   return (
-    <div id="SkillsSection1">
-      <FadeInAnimation>
-        <div className="SkillsSectionTitle">
-          <h3><i>Skills</i></h3>
-        </div>
+    <section id="skills" className="sw-section sw-skills">
+      <div className="sw-container">
+        <SectionHeader index={s.index} label={s.label} title={s.title} count={s.items.length} />
 
-        <div className="SkillCarousel">
-          <button
-            className="SkillCarousel__arrow"
-            onClick={() => navigate('prev')}
-            disabled={current === 0}
-          >
-            <PreviousArrow2 />
-          </button>
-
-          <div className="SkillCarousel__track">
-            <div className={`SkillCarousel__card ${animClass}`}>
-              <span className="SkillCarousel__label">{skill.label}</span>
-              <h4>{skill.title}</h4>
-              <div className="SkillCarousel__rule" />
-              <div className="SkillCarousel__body">{skill.content}</div>
-              <span className="SkillCarousel__counter">{current + 1} / {skills.length}</span>
-            </div>
-          </div>
-
-          <button
-            className="SkillCarousel__arrow"
-            onClick={() => navigate('next')}
-            disabled={current === skills.length - 1}
-          >
-            <NextArrow2 />
-          </button>
-        </div>
-
-        <div className="SkillCarousel__dots">
-          {skills.map((_, i) => (
-            <span
-              key={i}
-              className={`SkillCarousel__dot${i === current ? ' SkillCarousel__dot--on' : ''}`}
-              onClick={() => {
-                if (i !== current && !animClass) {
-                  const dir = i > current ? 'next' : 'prev';
-                  setAnimClass(`skillcard-exit-${dir}`);
-                  setTimeout(() => {
-                    setCurrent(i);
-                    setAnimClass(`skillcard-enter-${dir}`);
-                    setTimeout(() => setAnimClass(''), 400);
-                  }, 280);
-                }
-              }}
-            />
+        <div
+          className="sw-skills__grid"
+          ref={trackRef}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={s.label}
+          tabIndex={0}
+        >
+          {s.items.map((skill, i) => (
+            <Reveal as="article" key={skill.title} className="sw-skill" delay={(i % 3) * 0.08}>
+              <div className="sw-skill__top">
+                <span className="sw-skill__num">{num(i + 1)}</span>
+                <span className="sw-skill__label">{skill.label}</span>
+              </div>
+              <h3 className="sw-skill__title">{skill.title}</h3>
+              <dl className="sw-skill__groups">
+                {skill.groups.map(([name, list]) => (
+                  <div key={name}>
+                    <dt>{name}</dt>
+                    <dd>{list}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
           ))}
+          <Reveal className="sw-skill sw-skill--cta" delay={0.16}>
+            <span className="sw-skill__num">({num(s.items.length + 1)})</span>
+            <p className="sw-skill__cta-title">{s.ctaTitle}</p>
+            <a className="sw-btn sw-btn--primary" href="#ContactForm">{s.cta} <span aria-hidden="true">→</span></a>
+          </Reveal>
         </div>
-      </FadeInAnimation>
-    </div>
+
+        <div className="sw-carousel-ctrl">
+          <button type="button" className="sw-carousel-ctrl__arrow" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label={s.prev}>←</button>
+          <div className="sw-carousel-ctrl__dots">
+            {Array.from({ length: slideCount }, (_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={i === active ? 'is-active' : ''}
+                aria-label={`${i + 1} / ${slideCount}`}
+                aria-current={i === active ? 'true' : undefined}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </div>
+          <span className="sw-carousel-ctrl__count" aria-live="polite">{num(active + 1)} / {num(slideCount)}</span>
+          <button type="button" className="sw-carousel-ctrl__arrow" onClick={() => goTo(active + 1)} disabled={active === slideCount - 1} aria-label={s.next}>→</button>
+        </div>
+      </div>
+
+      <Marquee items={t.marquee} reverse className="sw-marquee--outline" />
+    </section>
   );
 }
 

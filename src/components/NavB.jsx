@@ -1,110 +1,130 @@
-import { useState } from 'react';
-import { MenuIcon2 } from './Icons/MenuIcon2';
+import { useEffect, useRef, useState } from 'react';
 import LogoImg from './assets-copy/SteevenWeminLogo.jpg';
-import { DropdownIcon1 } from './Icons/DropdownIcon1';
+import { useLanguage } from '../i18n/LanguageContext';
+import { LANGUAGES } from '../i18n/translations';
+import { SectionLink, useRouter } from '../router';
+
+const SECTIONS = ['about', 'experience', 'work', 'skills', 'goals'];
+
+function LanguageSwitch({ className = '' }) {
+  const { lang, setLang, t } = useLanguage();
+  return (
+    <div className={`sw-lang ${className}`} role="group" aria-label={t.nav.language}>
+      {LANGUAGES.map(code => (
+        <button
+          key={code}
+          type="button"
+          className={code === lang ? 'is-active' : ''}
+          aria-pressed={code === lang}
+          lang={code}
+          onClick={() => setLang(code)}
+        >
+          {code.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function NavB() {
-  const [sideMenuOpen, setSideMenuOpen] = useState(false);
-  const [listOfContentsOpen, setOpenContents] = useState({ mobileMenu: false, dropdownBar: false, mobileDropdown: false });
-  const [currentDropdownIndex, setCurrentDropdownIndex] = useState(-1);
-  const [classNameOpen, setClassNameOfOpen] = useState('');
+  const { t } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('');
+  const menuButton = useRef(null);
+  const { path } = useRouter();
 
-  function handleOpenMenuDropdown(e) {
-    if (e.target.id !== null) {
-      const index = parseInt(e.target.id.toString().split('-')[1]);
-      if (index >= 0 && !isNaN(index)) {
-        setOpenContents({ mobileMenu: false, dropdownBar: true, mobileDropdown: true });
-        setCurrentDropdownIndex(index);
-      }
-    }
-  }
+  // Solid background once the page is scrolled.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  function handleCloseMenuDropdown() {
-    setCurrentDropdownIndex(-1);
-    setOpenContents({ ...listOfContentsOpen, mobileMenu: true, dropdownBar: false, mobileDropdown: false });
-  }
+  // Highlight the section currently in view.
+  useEffect(() => {
+    // On /projects the "Work" link stays highlighted.
+    if (path !== '/') { setActive('work'); return; }
+    setActive('');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    SECTIONS.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, [path]);
 
-  function handleOpenMenu() {
-    setClassNameOfOpen('open');
-    setOpenContents({ ...listOfContentsOpen, mobileMenu: true });
-  }
+  // Full-screen menu: lock page scroll and close with Escape.
+  useEffect(() => {
+    if (!open) return;
+    document.body.style.overflow = 'hidden';
+    const onKey = e => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+      menuButton.current?.focus();
+    };
+  }, [open]);
 
-  function closeAll() {
-    if (currentDropdownIndex !== -1) setCurrentDropdownIndex(-1);
-    setOpenContents({ mobileMenu: false, dropdownBar: false, mobileDropdown: false });
-    setClassNameOfOpen('');
-  }
-
-  const isMobileMenuOpen = (listOfContentsOpen.mobileMenu && classNameOpen === 'open') || listOfContentsOpen.mobileDropdown;
+  const close = () => setOpen(false);
 
   return (
-    <div id="nav-bar2-div">
-      <div id="nav-bar2">
-        <ul id="nav-links2">
-          <li id="dropli-1" onClick={() => setSideMenuOpen(true)}>
-            <a href="#nav-bar2-div" id="link-1"><DropdownIcon1 /> Menu</a>
-          </li>
-        </ul>
+    <>
+      <a className="sw-skip" href="#main">{t.nav.skip}</a>
 
-        <ul id="Logo2">
-          <li>
-            <a href="#nav-bar2-div"><img id="HomeLogo" src={LogoImg} alt="Home logo" width="100" height="80" /></a>
-          </li>
-        </ul>
+      <header className={`sw-nav${scrolled ? ' is-scrolled' : ''}`}>
+        {/* Shown on tablet/mobile only: Menu on the left, logo centred, "Let's talk" on the right. */}
+        <button
+          ref={menuButton}
+          type="button"
+          className="sw-nav__menu"
+          aria-expanded={open}
+          aria-controls="sw-overlay"
+          onClick={() => setOpen(true)}
+        >
+          <span className="sw-nav__burger" aria-hidden="true"><i /><i /></span>
+          {t.nav.menu}
+        </button>
 
-        <ul id="nav-center-links">
-          <li id="AboutMeSection"><a href="#BioCareer">About me</a></li>
-          <li id="ContactSection"><a href="#ContactForm">Contact</a></li>
-        </ul>
+        <SectionLink className="sw-nav__logo" hash="#top" aria-label={t.nav.home}>
+          <img src={LogoImg} alt="" width="44" height="44" />
+        </SectionLink>
 
-        <ul id="burger-menu2">
-          <li onClick={() => {
-            if (!listOfContentsOpen.mobileMenu && !listOfContentsOpen.mobileDropdown) {
-              handleOpenMenu();
-            } else {
-              closeAll();
-            }
-          }}>
-            <MenuIcon2 isOpen={isMobileMenuOpen ? 'open' : ''} />
-          </li>
-        </ul>
-
-        {listOfContentsOpen.mobileDropdown && (
-          <ul id="BackToMobileMenu" onPointerEnter={handleCloseMenuDropdown}>
-            <li>
-              <button onClick={handleCloseMenuDropdown}>Back to Menu</button>
-            </li>
-          </ul>
-        )}
-      </div>
-
-      {/* Full-screen side menu */}
-      <div className={`side-menu${sideMenuOpen ? ' open' : ''}`}>
-        <button className="side-menu__close" onClick={() => setSideMenuOpen(false)}>Close</button>
-        <nav className="side-menu__nav">
-          <a href="#CareerGoalDiv" onClick={() => setSideMenuOpen(false)}>Career Goals</a>
-          <a href="#TitleExperience" onClick={() => setSideMenuOpen(false)}>Experience</a>
-          <a href="#SkillsSection1" onClick={() => setSideMenuOpen(false)}>Skills</a>
-          <a href="#ProjectDiv" onClick={() => setSideMenuOpen(false)}>Projects</a>
-          <a href="#BioCareer" onClick={() => setSideMenuOpen(false)}>About me</a>
-          <a href="#ContactForm" onClick={() => setSideMenuOpen(false)}>Contact</a>
+        <nav className="sw-nav__links" aria-label="Main">
+          {SECTIONS.map((id, i) => (
+            <SectionLink key={id} hash={`#${id}`} className={active === id ? 'is-active' : ''} aria-current={active === id ? 'true' : undefined}>
+              <span className="sw-nav__num">0{i + 1}</span>
+              {t.nav.links[id]}
+            </SectionLink>
+          ))}
         </nav>
-      </div>
 
-      <div className={`divContainer ${classNameOpen}`}>
-        <div className={listOfContentsOpen.mobileMenu ? `mobile-content-menu2 ${classNameOpen}` : 'mobile-content-menu2'}>
-          <li id="dropli-1" onPointerEnter={handleOpenMenuDropdown}><a href="#nav-bar2-div" id="link-1">MENU <DropdownIcon1 /></a></li>
-          <li id="AboutMeSection"><a href="#BioCareer" onPointerEnter={() => setTimeout(closeAll, 500)}>About me</a></li>
-          <li id="ContactSection"><a href="#ContactForm" onPointerEnter={() => setTimeout(closeAll, 500)}>Contact</a></li>
+        <div className="sw-nav__right">
+          <LanguageSwitch className="sw-nav__lang" />
+          <a className="sw-btn sw-btn--pill sw-nav__cta" href="#ContactForm">{t.nav.cta}</a>
         </div>
-      </div>
+      </header>
 
-      <div
-        className={`blur-curtains2 ${classNameOpen}`}
-        onMouseEnter={() => { if (!listOfContentsOpen.searchBar) closeAll(); }}
-        onClick={closeAll}
-      />
-    </div>
+      <div id="sw-overlay" className={`sw-overlay${open ? ' is-open' : ''}`} aria-hidden={!open} inert={open ? undefined : ''}>
+        <div className="sw-overlay__top">
+          <LanguageSwitch />
+          <button type="button" className="sw-overlay__close" onClick={close} autoFocus={open}>
+            {t.nav.close} <span aria-hidden="true">✕</span>
+          </button>
+        </div>
+        <nav className="sw-overlay__nav" aria-label="Mobile">
+          {SECTIONS.map((id, i) => (
+            <SectionLink key={id} hash={`#${id}`} onClick={close} style={{ transitionDelay: open ? `${0.08 + i * 0.05}s` : '0s' }}>
+              <span className="sw-overlay__num">0{i + 1}</span>
+              {t.nav.links[id]}
+            </SectionLink>
+          ))}
+        </nav>
+        <a className="sw-btn sw-btn--primary sw-overlay__cta" href="#ContactForm" onClick={close}>{t.nav.cta} →</a>
+      </div>
+    </>
   );
 }
 
