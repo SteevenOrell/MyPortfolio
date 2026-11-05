@@ -1,17 +1,17 @@
-import ecomWebsite from '../components/assets-copy/EcomWebsite.png';
-import ecomWebsite2 from '../components/assets-copy/EcomWebsite2.png';
-import ecomWebsite3 from '../components/assets-copy/EcomWebsite3.png';
-import ecomWebsite4 from '../components/assets-copy/EcomWebsite4.png';
-import wcc1Img from '../components/assets-copy/WccImg1.png';
-import wccImg2 from '../components/assets-copy/WccImg2.png';
-import wccImg3 from '../components/assets-copy/WccImg3.png';
-import wccImg4 from '../components/assets-copy/WccImg4.png';
+import ecom1 from '../components/assets-copy/ecom-1-home.webp';
+import ecom2 from '../components/assets-copy/ecom-2-apparel.webp';
+import ecom3 from '../components/assets-copy/ecom-3-detail.webp';
+import ecom4 from '../components/assets-copy/ecom-4-cart.webp';
+import wayanda1 from '../components/assets-copy/wayanda-1-home.webp';
+import wayanda2 from '../components/assets-copy/wayanda-2-pricing.webp';
+import wayanda3 from '../components/assets-copy/wayanda-3-about.webp';
+import wayanda4 from '../components/assets-copy/wayanda-4-mission.webp';
 import chatAppImg from '../components/assets-copy/Capture-ChatApp.JPG';
 import capstoneImg from '../components/assets-copy/CapstoneImages.jpg';
-import ecomVideo from '../components/assets-copy/EcomWebAppTest.mp4';
-import wayandaVideo from '../components/assets-copy/WayandaWebTest.mp4';
-import ecomMobileVideo from '../components/assets-copy/Oct-15-2025-1760559225_1722441.mov';
-import wayandaMobileVideo from '../components/assets-copy/Oct-15-2025-1760559357_7705660.mov';
+import ecomVideo from '../components/assets-copy/ecom-walkthrough-desktop.webm';
+import wayandaVideo from '../components/assets-copy/wayanda-walkthrough-desktop.webm';
+import ecomMobileVideo from '../components/assets-copy/ecom-walkthrough-mobile.webm';
+import wayandaMobileVideo from '../components/assets-copy/wayanda-walkthrough-mobile.webm';
 import projectCoverAlt from '../components/assets-copy/ChatGPT Image May 8, 2026, 04_43_07 PM.png';
 
 // Media and links for every project. The text (title, category, description, tags) lives in
@@ -25,24 +25,23 @@ import projectCoverAlt from '../components/assets-copy/ChatGPT Image May 8, 2026
 // cover:    'video' to play `video` on the card, or an image to show instead.
 // detailsVideo: also play the video in the details panel.
 // fit:      'contain' shows the whole video / image on the card (zoomed out) instead of filling and cropping.
-// tall:     on phones the card plays `mobileVideo`, a portrait recording, in a taller frame.
+// mobileVideo: played in the details panel on phones (with detailsVideo).
 export const PROJECTS = [
   {
     id: 'wayanda',
     featured: true,
     link: 'https://github.com/SteevenOrell/WayandaCC',
-    images: [wcc1Img, wccImg2, wccImg3, wccImg4],
+    images: [wayanda1, wayanda2, wayanda3, wayanda4],
     video: wayandaVideo,
     mobileVideo: wayandaMobileVideo,
     cover: 'video',
     fit: 'contain',
-    tall: true,
   },
   {
     id: 'ecommerce',
     featured: true,
     link: 'https://github.com/SteevenOrell/PracticeEcommerceWebsite',
-    images: [ecomWebsite, ecomWebsite2, ecomWebsite3, ecomWebsite4],
+    images: [ecom1, ecom2, ecom3, ecom4],
     video: ecomVideo,
     mobileVideo: ecomMobileVideo,
     cover: 'video',

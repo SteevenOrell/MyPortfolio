@@ -727,8 +727,6 @@ a.sw-btn--pill:hover { color: #fff; }
   .sw-wk:last-child { margin-bottom: 0; }
   .sw-wk__in { grid-template-columns: 1fr; height: auto; min-height: 0; border-radius: 22px; }
   .sw-wk__media { order: -1; aspect-ratio: 4 / 3; border-radius: 14px; }
-  /* Wayanda's portrait phone recording: the frame takes the recording's own size, nothing cropped. */
-  .sw-wk--portrait .sw-wk__media { aspect-ratio: 1078 / 1498; }
   .sw-wk__tx { gap: 18px; padding: 14px 10px 10px; }
   .sw-wk__title { font-size: clamp(38px, 11vw, 58px); }
 }

@@ -3,7 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion
 
 import { useLanguage } from '../i18n/LanguageContext';
 import { withText } from '../data/projects';
-import { PHONE_QUERY, useMediaQuery } from '../hooks';
+import { useMediaQuery } from '../hooks';
 import { Link } from '../router';
 import { ArrowRight, ArrowUpRight } from './icons';
 import { Reveal } from './motion';
@@ -12,18 +12,18 @@ import ProjectSheet from './ProjectSheet';
 
 const pad = n => String(n).padStart(2, '0');
 
-// The card's picture: the project video, or its cover image.
-// Phones get the portrait recording only for "tall" projects (their frame is shaped for it).
-export function ProjectCover({ project, phone }) {
+// The card's picture: the project video, or its cover image. Every card uses the same
+// landscape frame, so the desktop recording plays on phones too.
+export function ProjectCover({ project }) {
   if (project.cover === 'video') {
-    return <video autoPlay loop muted playsInline preload="metadata" poster={project.images[0]} src={phone && project.tall ? project.mobileVideo : project.video} />;
+    return <video autoPlay loop muted playsInline preload="metadata" poster={project.images[0]} src={project.video} />;
   }
   return <img src={project.cover} alt="" loading="lazy" />;
 }
 
 // One stacking card. On desktop it sticks under the nav; while the next card slides over it,
 // it shrinks a little and darkens (scale 1 → 0.93, dim 0 → 0.55).
-function StackCard({ project, index, total, nextRef, cardRef, stacking, phone, onOpen }) {
+function StackCard({ project, index, total, nextRef, cardRef, stacking, onOpen }) {
   const { t } = useLanguage();
   const w = t.work;
   const own = useRef(null);
@@ -31,10 +31,9 @@ function StackCard({ project, index, total, nextRef, cardRef, stacking, phone, o
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
   const dim = useTransform(scrollYProgress, [0, 1], [0, 0.55]);
   const animated = stacking && nextRef;
-  const portrait = project.tall && phone;
 
   return (
-    <article ref={cardRef} className={`sw-wk${portrait ? ' sw-wk--portrait' : ''}`}>
+    <article ref={cardRef} className="sw-wk">
       <motion.div className="sw-wk__in" style={animated ? { scale } : undefined}>
         <div className="sw-wk__tx">
           <p className="sw-wk__top">
@@ -58,7 +57,7 @@ function StackCard({ project, index, total, nextRef, cardRef, stacking, phone, o
           </div>
         </div>
         <button type="button" className={`sw-wk__media${project.fit === 'contain' ? ' sw-wk__media--contain' : ''}`} onClick={onOpen} tabIndex={-1} aria-hidden="true">
-          <ProjectCover project={project} phone={phone} />
+          <ProjectCover project={project} />
         </button>
         {animated && <motion.span className="sw-wk__dim" aria-hidden="true" style={{ opacity: dim }} />}
       </motion.div>
@@ -71,7 +70,6 @@ const Project = () => {
   const { t } = useLanguage();
   const w = t.work;
   const reduce = useReducedMotion();
-  const phone = useMediaQuery(PHONE_QUERY);
   const stacking = useMediaQuery('(min-width: 1001px)') && !reduce;
   const [open, setOpen] = useState(null);
 
@@ -94,7 +92,6 @@ const Project = () => {
               cardRef={refs[i]}
               nextRef={refs[i + 1]}
               stacking={stacking}
-              phone={phone}
               onOpen={() => setOpen(i)}
             />
           ))}

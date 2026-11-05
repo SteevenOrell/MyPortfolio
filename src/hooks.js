@@ -13,5 +13,5 @@ export function useMediaQuery(query) {
   return matches;
 }
 
-// Phones get the portrait .mov recordings instead of the desktop videos.
+// Phones: the details panel plays the phone-width walkthrough recordings.
 export const PHONE_QUERY = '(max-width: 549px)';
