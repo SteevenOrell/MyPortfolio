@@ -1,9 +1,9 @@
 import { Sidebar } from 'primereact/sidebar';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PHONE_QUERY, useMediaQuery } from '../hooks';
-import { ArrowUpRight } from './icons';
+import ProjectLinks from './ProjectLinks';
 
-// Full-screen details panel for one project: text, GitHub link, optional video and the screenshots.
+// Full-screen details panel for one project: text, live site / GitHub links, optional video and the screenshots.
 function ProjectSheet({ project, number, onClose }) {
   const { t } = useLanguage();
   const w = t.work;
@@ -24,7 +24,7 @@ function ProjectSheet({ project, number, onClose }) {
           <h3 className="sw-sheet__title">{project.title}</h3>
           <p className="sw-sheet__text">{project.description}</p>
           <ul className="sw-tags">{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
-          <a className="sw-btn sw-btn--primary" href={project.link} target="_blank" rel="noreferrer">{w.github} <ArrowUpRight /></a>
+          <div className="sw-sheet__links"><ProjectLinks project={project} primary /></div>
           {project.detailsVideo && (
             <video
               className="sw-sheet__video"

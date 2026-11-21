@@ -81,6 +81,7 @@ const en = {
     title: 'Latest projects',
     details: 'View details',
     github: 'GitHub',
+    live: 'Live site',
     gallery: 'Screenshots',
     closeDetails: 'Close',
     viewAll: 'View all projects',
@@ -109,12 +110,60 @@ const en = {
         tags: ['React', 'Node.js', 'REST API'],
       },
       {
-        id: 'chat',
-        title: 'Chat Application',
-        shortTitle: 'Chat App', // shown on phones (projects page)
-        category: 'Real-time app',
-        description: 'A real-time chat application letting people talk to each other instantly. Designed for desktop.',
-        tags: ['Socket.io', 'Express', 'Node.js', 'MongoDB', 'jQuery'],
+        id: 'vizam',
+        title: 'VIZAM Website',
+        shortTitle: 'VIZAM', // shown on phones (projects page)
+        category: 'Website',
+        description: 'The bilingual (English / French) website of VIZAM, my technology studio: services, pricing shown in the visitor’s currency, a showcase of our projects and the studio’s story, with motion throughout.',
+        tags: ['Next.js', 'React', 'Motion', 'EN / FR'],
+      },
+      {
+        id: 'orvane',
+        title: 'Orvane Automotive',
+        shortTitle: 'Orvane', // shown on phones (projects page)
+        category: 'Website',
+        description: 'A concept site for a fictional electric car brand: five models, a step-by-step configurator (paint, wheels, interior, summary), a filterable gallery and a test-drive request. All imagery is AI-generated.',
+        tags: ['Next.js', 'GSAP', 'Zod', 'Configurator'],
+      },
+      {
+        id: 'halvaren',
+        title: 'Halvaren Tech Consulting',
+        shortTitle: 'Halvaren', // shown on phones (projects page)
+        category: 'Website',
+        description: 'A concept site for a fictional technology consultancy: service practices, industries, filterable case studies, insights, careers and a multi-step consultation request form.',
+        tags: ['Next.js', 'GSAP', 'React Hook Form', 'Zod'],
+      },
+      {
+        id: 'ostrel',
+        title: 'Ostrel Architecture Studio',
+        shortTitle: 'Ostrel', // shown on phones (projects page)
+        category: 'Website',
+        description: 'A concept site for a fictional architecture and interiors studio: a full-screen project hero, a project index filtered by discipline, detailed project studies, services, journal and studio pages.',
+        tags: ['Next.js', 'GSAP', 'Motion', 'React Hook Form'],
+      },
+      {
+        id: 'synora',
+        title: 'Synora Health (mobile app)',
+        shortTitle: 'Synora', // shown on phones (projects page)
+        category: 'Mobile app',
+        description: 'The mobile app of a fictional multi-specialty clinic: browse specialties and doctors, book a visit in a few steps, reschedule or cancel it and get notified. Concept project with synthetic data only.',
+        tags: ['React Native', 'Expo', 'Firebase', 'Expo Router'],
+      },
+      {
+        id: 'ticktack',
+        title: 'TickTack',
+        shortTitle: 'TickTack', // shown on phones (projects page)
+        category: 'Mobile app',
+        description: 'A day-planning app: a today view, day / week / month calendar, goals with progress, routines with a step-by-step runner, and reminders. Works offline as a guest, with optional account sync.',
+        tags: ['React Native', 'Expo', 'SQLite', 'Firebase'],
+      },
+      {
+        id: 'coplanner',
+        title: 'CoPlanner Finance App',
+        shortTitle: 'CoPlanner', // shown on phones (projects page)
+        category: 'Mobile app',
+        description: 'A personal finance planner (not a bank): budgets, recurring bills, savings goals, reports and bank CSV import, with each currency kept separate. Offline-first with cloud sync.',
+        tags: ['React Native', 'Expo', 'SQLite', 'Supabase'],
       },
       {
         id: 'pocketmeal',
@@ -325,6 +374,7 @@ const fr = {
     title: 'Derniers projets',
     details: 'Voir les détails',
     github: 'GitHub',
+    live: 'Voir le site',
     gallery: 'Captures d’écran',
     closeDetails: 'Fermer',
     viewAll: 'Voir tous les projets',
@@ -353,12 +403,60 @@ const fr = {
         tags: ['React', 'Node.js', 'API REST'],
       },
       {
-        id: 'chat',
-        title: 'Application de chat',
-        shortTitle: 'Chat App', // shown on phones (projects page)
-        category: 'Temps réel',
-        description: 'Une application de chat en temps réel pour échanger instantanément. Conçue pour ordinateur.',
-        tags: ['Socket.io', 'Express', 'Node.js', 'MongoDB', 'jQuery'],
+        id: 'vizam',
+        title: 'Site VIZAM',
+        shortTitle: 'VIZAM', // shown on phones (projects page)
+        category: 'Site web',
+        description: 'Le site bilingue (anglais / français) de VIZAM, mon studio technologique : services, tarifs affichés dans la devise du visiteur, vitrine de nos projets et histoire du studio, le tout animé.',
+        tags: ['Next.js', 'React', 'Motion', 'EN / FR'],
+      },
+      {
+        id: 'orvane',
+        title: 'Orvane Automotive',
+        shortTitle: 'Orvane', // shown on phones (projects page)
+        category: 'Site web',
+        description: 'Un site concept pour une marque fictive de voitures électriques : cinq modèles, un configurateur étape par étape (peinture, jantes, intérieur, récapitulatif), une galerie filtrable et une demande d’essai. Toutes les images sont générées par IA.',
+        tags: ['Next.js', 'GSAP', 'Zod', 'Configurateur'],
+      },
+      {
+        id: 'halvaren',
+        title: 'Halvaren Conseil Tech',
+        shortTitle: 'Halvaren', // shown on phones (projects page)
+        category: 'Site web',
+        description: 'Un site concept pour un cabinet fictif de conseil en technologie : expertises, secteurs, études de cas filtrables, articles, carrières et un formulaire de demande de consultation en plusieurs étapes.',
+        tags: ['Next.js', 'GSAP', 'React Hook Form', 'Zod'],
+      },
+      {
+        id: 'ostrel',
+        title: 'Studio d’architecture Ostrel',
+        shortTitle: 'Ostrel', // shown on phones (projects page)
+        category: 'Site web',
+        description: 'Un site concept pour un studio fictif d’architecture et d’intérieur : projet en plein écran à l’accueil, index des projets filtré par discipline, études de projet détaillées, services, journal et pages du studio.',
+        tags: ['Next.js', 'GSAP', 'Motion', 'React Hook Form'],
+      },
+      {
+        id: 'synora',
+        title: 'Synora Health (application mobile)',
+        shortTitle: 'Synora', // shown on phones (projects page)
+        category: 'Application mobile',
+        description: 'L’application mobile d’une clinique multispécialités fictive : parcourir les spécialités et les médecins, réserver une visite en quelques étapes, la déplacer ou l’annuler et recevoir des notifications. Projet concept avec des données fictives uniquement.',
+        tags: ['React Native', 'Expo', 'Firebase', 'Expo Router'],
+      },
+      {
+        id: 'ticktack',
+        title: 'TickTack',
+        shortTitle: 'TickTack', // shown on phones (projects page)
+        category: 'Application mobile',
+        description: 'Une application pour planifier sa journée : vue du jour, calendrier jour / semaine / mois, objectifs avec progression, routines guidées étape par étape et rappels. Fonctionne hors ligne en invité, avec synchronisation de compte en option.',
+        tags: ['React Native', 'Expo', 'SQLite', 'Firebase'],
+      },
+      {
+        id: 'coplanner',
+        title: 'Application finances CoPlanner',
+        shortTitle: 'CoPlanner', // shown on phones (projects page)
+        category: 'Application mobile',
+        description: 'Un planificateur de finances personnelles (pas une banque) : budgets, factures récurrentes, objectifs d’épargne, rapports et import CSV bancaire, chaque devise restant séparée. Hors ligne d’abord, avec synchronisation cloud.',
+        tags: ['React Native', 'Expo', 'SQLite', 'Supabase'],
       },
       {
         id: 'pocketmeal',

@@ -5,10 +5,11 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { withText } from '../data/projects';
 import { useMediaQuery } from '../hooks';
 import { Link } from '../router';
-import { ArrowRight, ArrowUpRight } from './icons';
+import { ArrowRight } from './icons';
 import { Reveal } from './motion';
 import SectionHeader from './SectionHeader';
 import ProjectSheet from './ProjectSheet';
+import ProjectLinks from './ProjectLinks';
 
 const pad = n => String(n).padStart(2, '0');
 
@@ -49,7 +50,7 @@ function StackCard({ project, index, total, nextRef, cardRef, stacking, onOpen }
             <ul className="sw-wk__tags">{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
           </div>
           <div className="sw-wk__bot">
-            <a className="sw-link" href={project.link} target="_blank" rel="noreferrer">{w.github} <ArrowUpRight /></a>
+            <span className="sw-wk__links"><ProjectLinks project={project} /></span>
             <button type="button" className="sw-pillbtn" onClick={onOpen}>
               <span>{w.details}</span>
               <span className="sw-pillbtn__ic"><ArrowRight className="" /></span>

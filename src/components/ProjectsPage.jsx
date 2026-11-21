@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight } from './icons';
 import { Reveal } from './motion';
 import SectionHeader from './SectionHeader';
 import ProjectSheet from './ProjectSheet';
+import ProjectLinks from './ProjectLinks';
 
 const pad = n => String(n).padStart(2, '0');
 
@@ -70,7 +71,7 @@ function ProjectsPage() {
                 </h3>
                 <div className="sw-card__links">
                   <button type="button" className="sw-link" onClick={() => setOpen(p.id)}>{w.details}</button>
-                  <a className="sw-link" href={p.link} target="_blank" rel="noreferrer">{w.github} <ArrowUpRight /></a>
+                  <ProjectLinks project={p} />
                 </div>
               </li>
             );

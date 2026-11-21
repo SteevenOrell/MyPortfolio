@@ -650,6 +650,7 @@ a.sw-btn--pill:hover { color: #fff; }
   padding-top: 20px;
   border-top: 1px solid var(--sw-line);
 }
+.sw-wk__links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .sw-wk__media {
   position: relative;
   display: block;
@@ -853,6 +854,7 @@ a.sw-btn--pill:hover { color: #fff; }
 .sw-sheet .p-sidebar-close:hover { background: #fff; color: #000; }
 .sw-sheet .p-sidebar-content { padding: 0 var(--sw-gutter) 64px; }
 .sw-sheet__inner { max-width: 1100px; margin: 0 auto; display: grid; gap: 20px; justify-items: start; }
+.sw-sheet__links { display: flex; flex-wrap: wrap; gap: 12px; }
 .sw-sheet__title {
   font-family: var(--sw-display);
   font-size: clamp(40px, 7vw, 96px);
