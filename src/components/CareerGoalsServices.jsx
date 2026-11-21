@@ -2,6 +2,7 @@ import stepsImg from './assets-copy/Wooden_Steps_Made_Of_Blocks_As_An_Idea_O_ori
 import learnShareImg from './assets-copy/LearnAndShareImg.png';
 import createImg from './assets-copy/The_Chalk-drawn_Staircase_Goes_Up_original_1877682.jpg';
 import { useLanguage } from '../i18n/LanguageContext';
+import { ArrowUpRight } from './icons';
 import { ParallaxMedia, Reveal } from './motion';
 import SectionHeader from './SectionHeader';
 
@@ -26,6 +27,11 @@ function CareerGoalsServices() {
                 <span className="sw-goal__num">({String(i + 1).padStart(2, '0')})</span>
                 <h3 className="sw-goal__title">{goal.title}</h3>
                 <p>{goal.description}</p>
+                {goal.link && (
+                  <a className="sw-link sw-goal__link" href={goal.link.href} target="_blank" rel="noreferrer">
+                    {goal.link.label} <ArrowUpRight />
+                  </a>
+                )}
               </Reveal>
             </li>
           ))}

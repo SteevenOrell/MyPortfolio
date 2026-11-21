@@ -1012,6 +1012,7 @@ a.sw-btn--pill:hover { color: #fff; }
 /* ---------- Career goals ---------- */
 
 .sw-goals { background: var(--sw-bg-2); }
+.sw-goal__link { display: inline-flex; margin-top: 18px; }
 .sw-goals__list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(72px, 10vw, 160px); }
 .sw-goal {
   display: grid;

@@ -255,8 +255,9 @@ const en = {
         description: 'Every lesson learned drives one purpose: to lead, empower and share knowledge. I aim to mentor others and open pathways for new graduates breaking into the field.',
       },
       {
-        title: 'Create an agency',
-        description: 'I plan to build an agency that helps clients thrive in the digital landscape, starting with website and mobile app development.',
+        title: 'Grow my studio, VIZAM',
+        description: 'I founded VIZAM, a technology studio that helps clients thrive in the digital landscape with websites, web apps and mobile apps. My goal now is to grow it, one project at a time.',
+        link: { href: 'https://vizam-kappa.vercel.app', label: 'Visit the VIZAM website' },
       },
     ],
   },
@@ -548,8 +549,9 @@ const fr = {
         description: 'Chaque leçon apprise sert un seul but : diriger, encourager et partager le savoir. Je souhaite accompagner d’autres personnes et ouvrir la voie aux nouveaux diplômés.',
       },
       {
-        title: 'Créer une agence',
-        description: 'Je prévois de fonder une agence qui aide les clients à réussir dans le monde numérique, en commençant par le développement de sites web et d’applications mobiles.',
+        title: 'Faire grandir mon studio, VIZAM',
+        description: 'J’ai fondé VIZAM, un studio technologique qui aide les clients à réussir dans le monde numérique avec des sites web, des applications web et des applications mobiles. Mon objectif est maintenant de le faire grandir, un projet à la fois.',
+        link: { href: 'https://vizam-kappa.vercel.app/fr', label: 'Visiter le site de VIZAM' },
       },
     ],
   },
