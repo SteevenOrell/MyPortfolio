@@ -257,7 +257,7 @@ const en = {
       {
         title: 'Grow my studio, VIZAM',
         description: 'I founded VIZAM, a technology studio that helps clients thrive in the digital landscape with websites, web apps and mobile apps. My goal now is to grow it, one project at a time.',
-        link: { href: 'https://vizam-kappa.vercel.app', label: 'Visit the VIZAM website' },
+        link: { href: 'https://vizam.tech', label: 'Visit the VIZAM website' },
       },
     ],
   },
@@ -551,7 +551,7 @@ const fr = {
       {
         title: 'Faire grandir mon studio, VIZAM',
         description: 'J’ai fondé VIZAM, un studio technologique qui aide les clients à réussir dans le monde numérique avec des sites web, des applications web et des applications mobiles. Mon objectif est maintenant de le faire grandir, un projet à la fois.',
-        link: { href: 'https://vizam-kappa.vercel.app/fr', label: 'Visiter le site de VIZAM' },
+        link: { href: 'https://vizam.tech/fr', label: 'Visiter le site de VIZAM' },
       },
     ],
   },

@@ -90,7 +90,7 @@ export const PROJECTS = [
   {
     id: 'vizam',
     featured: true,
-    live: 'https://vizam-kappa.vercel.app',
+    live: 'https://vizam.tech',
     images: [vizam1, vizam2, vizam3, vizam4],
     video: vizamVideo,
     mobileVideo: vizamMobileVideo,
